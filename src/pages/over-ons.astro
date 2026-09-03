@@ -1,27 +1,37 @@
 ---
+import { Image } from 'astro:assets';
 import Base from '../layouts/Base.astro';
 import Eyebrow from '../components/Eyebrow.astro';
 import Steps from '../components/Steps.astro';
 import Reviews from '../components/Reviews.astro';
+import BrandStrip from '../components/BrandStrip.astro';
+import logoInstallQ from '../assets/certs/install-q.webp';
+import logoStek from '../assets/certs/stek.webp';
+import logoVca from '../assets/certs/vca.webp';
+import logoNen from '../assets/certs/nen-1010.webp';
 
 const certificaten = [
   {
     naam: 'InstallQ erkend',
+    logo: logoInstallQ,
     tekst:
       'Erkenning voor zonnestroomsystemen (PV) die onze deskundigheid, vakbekwaamheid en veilige werkwijze bevestigt.',
   },
   {
     naam: 'STEK erkend',
+    logo: logoStek,
     tekst:
       'Gecertificeerd voor koeltechniek, airconditioning en warmtepompen — veiligheid en vakmanschap voorop.',
   },
   {
     naam: 'VCA gecertificeerd',
+    logo: logoVca,
     tekst:
       'Wij voldoen aan strikte veiligheidsnormen en -procedures, voor een veilige werkomgeving bij jou thuis.',
   },
   {
     naam: 'NEN 1010',
+    logo: logoNen,
     tekst:
       'Onze elektrische installaties voldoen aan de Nederlandse norm voor laagspanningsinstallaties.',
   },
@@ -63,12 +73,9 @@ const certificaten = [
         {
           certificaten.map((cert) => (
             <div class="reveal rounded-2xl border border-pine-900/10 bg-white p-7">
-              <div class="flex items-center gap-3">
-                <span class="flex size-10 items-center justify-center rounded-xl bg-pine-100">
-                  <svg class="size-5 text-pine-700" viewBox="0 0 20 20" fill="none" aria-hidden="true">
-                    <path d="M10 1.5 3 4.5v5c0 4.2 3 7.6 7 9 4-1.4 7-4.8 7-9v-5l-7-3Z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" />
-                    <path d="m6.8 10 2.2 2.2 4.2-4.4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" />
-                  </svg>
+              <div class="flex items-center gap-4">
+                <span class="flex size-14 items-center justify-center rounded-xl bg-paper p-2">
+                  <Image src={cert.logo} alt={cert.naam} class="max-h-10 w-auto object-contain" />
                 </span>
                 <h3 class="font-display text-lg font-bold text-pine-900">{cert.naam}</h3>
               </div>
@@ -80,6 +87,7 @@ const certificaten = [
     </div>
   </section>
 
+  <BrandStrip />
   <Reviews />
   <Steps />
 </Base>

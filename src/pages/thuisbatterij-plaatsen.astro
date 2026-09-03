@@ -4,6 +4,7 @@ import Eyebrow from '../components/Eyebrow.astro';
 import ProductCard from '../components/ProductCard.astro';
 import Steps from '../components/Steps.astro';
 import FAQ from '../components/FAQ.astro';
+import BrandStrip from '../components/BrandStrip.astro';
 import { thuisbatterijen } from '../data/products';
 import { faqThuisbatterij, faqSchema } from '../data/faq';
 import { url } from '../lib/links';
@@ -148,6 +149,7 @@ import { url } from '../lib/links';
     </div>
   </section>
 
+  <BrandStrip />
   <Steps />
   <FAQ items={faqThuisbatterij} title="Veelgestelde vragen over thuisbatterijen" />
 </Base>

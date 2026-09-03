@@ -1,14 +1,27 @@
+import type { ImageMetadata } from 'astro';
+import imgAlphaess from '../assets/products/alphaess-smile-g3.webp';
+import imgEnphase from '../assets/products/enphase-5p.webp';
+import imgSigenergy from '../assets/products/sigenergy-5kw.webp';
+import imgWeheatFlint from '../assets/products/weheat-flint.webp';
+import imgElgaAce from '../assets/products/remeha-elga-ace.png';
+import imgElgaAceHybride from '../assets/products/remeha-elga-ace-hybride.webp';
+import imgWeheatAllElectric from '../assets/products/weheat-allelectric.webp';
+import imgDaikin from '../assets/products/daikin-altherma.webp';
+import imgVaillant from '../assets/products/vaillant-arotherm.webp';
+
 export interface Product {
   name: string;
   price: string;
   priceNote: string;
   points: string[];
+  image: ImageMetadata;
   popular?: boolean;
 }
 
 export const thuisbatterijen: Product[] = [
   {
     name: 'AlphaESS Smile G3',
+    image: imgAlphaess,
     price: '€ 3.700',
     priceNote: 'incl. installatie',
     points: [
@@ -22,6 +35,7 @@ export const thuisbatterijen: Product[] = [
   },
   {
     name: 'Enphase 5P',
+    image: imgEnphase,
     price: '€ 5.050',
     priceNote: 'incl. installatie',
     points: [
@@ -33,6 +47,7 @@ export const thuisbatterijen: Product[] = [
   },
   {
     name: 'Sigenergy SigenStor 5 kW',
+    image: imgSigenergy,
     price: '€ 6.995',
     priceNote: 'incl. installatie',
     points: [
@@ -47,6 +62,7 @@ export const thuisbatterijen: Product[] = [
 export const hybrideWarmtepompen: Product[] = [
   {
     name: 'Weheat Flint 6 kW',
+    image: imgWeheatFlint,
     price: '€ 3.894',
     priceNote: 'incl. subsidie en installatie',
     points: [
@@ -59,6 +75,7 @@ export const hybrideWarmtepompen: Product[] = [
   },
   {
     name: 'Remeha Elga Ace',
+    image: imgElgaAce,
     price: '€ 4.999',
     priceNote: 'incl. installatie',
     points: [
@@ -70,6 +87,7 @@ export const hybrideWarmtepompen: Product[] = [
   },
   {
     name: 'Remeha Elga Ace Hybride',
+    image: imgElgaAceHybride,
     price: '€ 5.500',
     priceNote: 'incl. installatie',
     points: [
@@ -84,6 +102,7 @@ export const hybrideWarmtepompen: Product[] = [
 export const allElectricWarmtepompen: Product[] = [
   {
     name: 'Weheat All-Electric',
+    image: imgWeheatAllElectric,
     price: '€ 11.500',
     priceNote: 'incl. installatie',
     points: [
@@ -95,6 +114,7 @@ export const allElectricWarmtepompen: Product[] = [
   },
   {
     name: 'Daikin Altherma',
+    image: imgDaikin,
     price: '€ 10.999',
     priceNote: 'incl. installatie',
     points: [
@@ -107,6 +127,7 @@ export const allElectricWarmtepompen: Product[] = [
   },
   {
     name: 'Vaillant aroTHERM Plus',
+    image: imgVaillant,
     price: '€ 12.500',
     priceNote: 'incl. installatie',
     points: [

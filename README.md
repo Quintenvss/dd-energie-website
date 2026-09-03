@@ -36,9 +36,9 @@ Zolang het endpoint leeg is, opent verzenden een voorgevulde e-mail (mailto-fall
 
 ## Nog toevoegen (TODO)
 
-- Echte installatiefoto's ("Recente installaties") — plaats in `public/` of `src/assets/`
-  en gebruik Astro's `<Image>` voor automatische optimalisatie.
-- Review-widget (Klantenvertellen/Trustoo) embedden in `src/components/Reviews.astro`.
+- Echte installatiefoto's ("Recente installaties") — plaats in `src/assets/` en gebruik
+  Astro's `<Image>` (product-, merk- en certificaatbeelden staan er al in).
+- Trustoo review-widget embedden in `src/components/Reviews.astro`.
 - Privacyverklaring- en cookiebeleid-pagina's (links staan al in de footer).
 - Resterende blogartikelen overzetten uit WordPress (als `.md` in `src/content/blog/`).
 

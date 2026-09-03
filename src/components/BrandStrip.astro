@@ -1,0 +1,45 @@
+---
+import { Image } from 'astro:assets';
+import weheat from '../assets/brands/weheat.webp';
+import dyness from '../assets/brands/dyness.webp';
+import alphaess from '../assets/brands/alphaess.webp';
+import haier from '../assets/brands/haier.webp';
+import marstek from '../assets/brands/marstek.webp';
+import remeha from '../assets/brands/remeha.webp';
+import nefitBosch from '../assets/brands/nefit-bosch.webp';
+import intergas from '../assets/brands/intergas.webp';
+import daikin from '../assets/brands/daikin.webp';
+
+const brands = [
+  { img: weheat, name: 'Weheat' },
+  { img: remeha, name: 'Remeha' },
+  { img: daikin, name: 'Daikin' },
+  { img: alphaess, name: 'AlphaESS' },
+  { img: nefitBosch, name: 'Nefit Bosch' },
+  { img: intergas, name: 'Intergas' },
+  { img: marstek, name: 'Marstek' },
+  { img: dyness, name: 'Dyness' },
+  { img: haier, name: 'Haier' },
+];
+---
+
+<section class="border-y border-pine-900/10 bg-white">
+  <div class="mx-auto max-w-6xl px-4 py-10 sm:px-6">
+    <p class="text-center font-mono text-xs tracking-widest text-ink/45 uppercase">
+      Wij installeren uitsluitend A-merken
+    </p>
+    <ul class="mt-7 flex flex-wrap items-center justify-center gap-x-12 gap-y-6">
+      {
+        brands.map((brand) => (
+          <li>
+            <Image
+              src={brand.img}
+              alt={brand.name}
+              class="h-7 w-auto opacity-55 grayscale transition duration-300 hover:opacity-100 hover:grayscale-0 sm:h-8"
+            />
+          </li>
+        ))
+      }
+    </ul>
+  </div>
+</section>
