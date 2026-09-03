@@ -1,0 +1,174 @@
+@import 'tailwindcss';
+@import '@fontsource-variable/bricolage-grotesque';
+@import '@fontsource-variable/instrument-sans';
+@import '@fontsource/spline-sans-mono/400.css';
+@import '@fontsource/spline-sans-mono/500.css';
+
+@theme {
+  /* Kleuren — pine (merk), paper (achtergrond), stroom (thuisbatterij), warmte (warmtepomp) */
+  --color-pine-950: #07231b;
+  --color-pine-900: #0c3428;
+  --color-pine-800: #114533;
+  --color-pine-700: #185c43;
+  --color-pine-600: #1f7452;
+  --color-pine-100: #dcebe0;
+  --color-paper: #f5f4ec;
+  --color-ink: #13211a;
+  --color-stroom: #c9f252;
+  --color-stroom-dark: #5d7a10;
+  --color-warmte: #f6b33b;
+  --color-warmte-dark: #a86a08;
+
+  --font-display: 'Bricolage Grotesque Variable', ui-sans-serif, system-ui, sans-serif;
+  --font-sans: 'Instrument Sans Variable', ui-sans-serif, system-ui, sans-serif;
+  --font-mono: 'Spline Sans Mono', ui-monospace, monospace;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+body {
+  font-family: var(--font-sans);
+  background: var(--color-paper);
+  color: var(--color-ink);
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Zichtbare focus voor toetsenbordgebruikers */
+:focus-visible {
+  outline: 3px solid var(--color-warmte);
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+/* ── Knoppen: consistent, uppercase, zakelijk ────────────────────── */
+.btn {
+  display: inline-block;
+  border-radius: 9999px;
+  padding: 0.9rem 1.8rem;
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+  text-align: center;
+  transition:
+    background-color 0.2s,
+    color 0.2s,
+    border-color 0.2s,
+    filter 0.2s,
+    transform 0.15s;
+}
+.btn:active {
+  transform: scale(0.98);
+}
+.btn-lime {
+  background: var(--color-stroom);
+  color: var(--color-pine-950);
+  box-shadow: 0 8px 24px -8px color-mix(in srgb, var(--color-stroom) 55%, transparent);
+}
+.btn-lime:hover {
+  filter: brightness(0.94);
+}
+.btn-dark {
+  background: var(--color-pine-900);
+  color: #fff;
+  box-shadow: 0 8px 24px -10px color-mix(in srgb, var(--color-pine-900) 60%, transparent);
+}
+.btn-dark:hover {
+  background: var(--color-pine-700);
+}
+.btn-outline-light {
+  border: 1px solid rgb(255 255 255 / 0.3);
+  color: #fff;
+}
+.btn-outline-light:hover {
+  background: rgb(255 255 255 / 0.1);
+}
+.btn-outline-dark {
+  border: 1px solid color-mix(in srgb, var(--color-pine-900) 25%, transparent);
+  color: var(--color-pine-900);
+}
+.btn-outline-dark:hover {
+  background: #fff;
+}
+
+/* Marker-highlight in koppen */
+.hl {
+  background: var(--color-stroom);
+  color: var(--color-pine-950);
+  padding: 0.02em 0.16em;
+  border-radius: 0.14em;
+  box-decoration-break: clone;
+  -webkit-box-decoration-break: clone;
+}
+
+/* ── Signatuur: laadbalkje (batterijsegmenten) in eyebrows ───────── */
+.chargebar {
+  display: inline-flex;
+  gap: 3px;
+  align-items: center;
+}
+.chargebar i {
+  width: 9px;
+  height: 14px;
+  border-radius: 2px;
+  background: currentColor;
+  opacity: 0.25;
+}
+.chargebar i.on {
+  opacity: 1;
+}
+
+.eyebrow {
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+
+/* ── Energiestroom-animatie (hero) ───────────────────────────────── */
+.flowline {
+  stroke-dasharray: 6 8;
+  animation: flow 1.6s linear infinite;
+}
+@keyframes flow {
+  to {
+    stroke-dashoffset: -28;
+  }
+}
+
+/* Scroll-reveal: subtiel, en zonder JS gewoon zichtbaar */
+.reveal {
+  opacity: 1;
+  transform: none;
+}
+@media (prefers-reduced-motion: no-preference) {
+  .js .reveal {
+    opacity: 0;
+    transform: translateY(14px);
+    transition:
+      opacity 0.55s ease,
+      transform 0.55s ease;
+  }
+  .js .reveal.in {
+    opacity: 1;
+    transform: none;
+  }
+}

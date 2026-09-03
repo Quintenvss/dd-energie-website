@@ -1,0 +1,44 @@
+---
+import Eyebrow from './Eyebrow.astro';
+import { url } from '../lib/links';
+
+const steps = [
+  {
+    title: 'Gegevens invullen',
+    text: 'Vul het korte formulier in — binnen een minuut hebben wij inzicht in jouw situatie. Bellen kan natuurlijk ook.',
+  },
+  {
+    title: 'Persoonlijke offerte',
+    text: 'Een specialist belt je binnen 1 werkdag en je ontvangt een heldere offerte op maat, inclusief subsidie. Zonder verrassingen.',
+  },
+  {
+    title: 'Installatie & besparen',
+    text: 'Akkoord? Dan plannen we direct de installatie in. Onze eigen monteurs leveren alles werkend op — en je betaalt pas achteraf.',
+  },
+];
+---
+
+<section class="bg-pine-900 text-white">
+  <div class="mx-auto max-w-6xl px-4 py-20 sm:px-6">
+    <div class="reveal max-w-xl">
+      <Eyebrow label="Zo werkt het" level={3} tone="light" />
+      <h2 class="font-display mt-3 text-3xl font-bold tracking-tight sm:text-4xl">
+        Van aanvraag tot oplevering, zonder gedoe
+      </h2>
+    </div>
+    <ol class="mt-12 grid gap-x-8 gap-y-10 md:grid-cols-3">
+      {
+        steps.map((step, i) => (
+          <li class="reveal border-t border-white/15 pt-6">
+            <span class="font-mono text-3xl text-stroom">0{i + 1}</span>
+            <h3 class="font-display mt-3 text-xl font-semibold">{step.title}</h3>
+            <p class="mt-3 text-sm leading-relaxed text-white/70">{step.text}</p>
+          </li>
+        ))
+      }
+    </ol>
+    <div class="reveal mt-12">
+      <a href={url('/offerte-aanvragen/')} class="btn btn-lime">Start je aanvraag</a>
+    </div>
+  </div>
+</section>

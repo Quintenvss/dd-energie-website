@@ -1,0 +1,24 @@
+---
+import Base from '../layouts/Base.astro';
+import { url } from '../lib/links';
+---
+
+<Base
+  title="Pagina niet gevonden — Duurzaam Direct Energie"
+  description="Deze pagina bestaat niet (meer). Ga terug naar de homepage van Duurzaam Direct Energie."
+>
+  <section class="mx-auto max-w-3xl px-4 py-24 text-center sm:px-6">
+    <p class="font-mono text-sm text-pine-600">foutcode 404 · geen stroom op dit adres</p>
+    <h1 class="font-display mt-4 text-4xl font-bold tracking-tight text-pine-900 sm:text-5xl">
+      Deze pagina is niet gevonden
+    </h1>
+    <p class="mx-auto mt-4 max-w-md text-ink/70">
+      De pagina die je zoekt bestaat niet (meer). Geen zorgen — via onderstaande knoppen ben je
+      zo weer op weg.
+    </p>
+    <div class="mt-8 flex flex-wrap justify-center gap-3">
+      <a href={url('/')} class="btn btn-dark">Naar de homepage</a>
+      <a href={url('/offerte-aanvragen/')} class="btn btn-outline-dark">Offerte aanvragen</a>
+    </div>
+  </section>
+</Base>

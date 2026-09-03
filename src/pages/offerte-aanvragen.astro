@@ -1,0 +1,49 @@
+---
+import Base from '../layouts/Base.astro';
+import Eyebrow from '../components/Eyebrow.astro';
+import OfferteForm from '../components/OfferteForm.astro';
+---
+
+<Base
+  title="Offerte aanvragen — Duurzaam Direct Energie"
+  description="Vraag een vrijblijvende offerte aan voor een thuisbatterij of warmtepomp. Binnen 1 werkdag een voorstel op maat, zonder verplichtingen."
+>
+  <section class="mx-auto grid max-w-6xl items-start gap-12 px-4 py-16 sm:px-6 lg:grid-cols-[1fr_1.1fr]">
+    <div>
+      <Eyebrow label="Offerte aanvragen" level={4} />
+      <h1 class="font-display mt-4 text-4xl font-bold tracking-tight text-pine-900 sm:text-5xl">
+        Weten wat jij kunt besparen?
+      </h1>
+      <p class="mt-5 leading-relaxed text-ink/70">
+        Vul het formulier in en ontvang binnen 1 werkdag een vrijblijvende offerte op maat voor
+        een warmtepomp of thuisbatterij. Liever direct contact?
+      </p>
+      <ul class="mt-7 space-y-4 text-sm">
+        <li>
+          <a href="tel:+31850608951" class="flex items-center gap-3 font-semibold text-pine-900 hover:text-pine-600">
+            <span class="flex size-10 items-center justify-center rounded-xl bg-pine-100">📞</span>
+            085 060 8951 <span class="font-normal text-ink/50">(werkdagen 09:00–17:00)</span>
+          </a>
+        </li>
+        <li>
+          <a href="mailto:info@ddenergie.nl" class="flex items-center gap-3 font-semibold text-pine-900 hover:text-pine-600">
+            <span class="flex size-10 items-center justify-center rounded-xl bg-pine-100">✉️</span>
+            info@ddenergie.nl
+          </a>
+        </li>
+      </ul>
+      <div class="mt-10 rounded-2xl border border-pine-900/10 bg-white p-6 text-sm text-ink/70">
+        <p class="font-semibold text-pine-900">Wat gebeurt er na je aanvraag?</p>
+        <ol class="mt-3 list-decimal space-y-1.5 pl-5">
+          <li>Een specialist belt je op het gekozen moment.</li>
+          <li>Je ontvangt een offerte op maat — vrijblijvend.</li>
+          <li>Akkoord? Dan plannen we direct de installatie in.</li>
+        </ol>
+      </div>
+    </div>
+
+    <div class="reveal rounded-3xl border border-pine-900/10 bg-white p-7 shadow-xl shadow-pine-900/5 sm:p-9">
+      <OfferteForm />
+    </div>
+  </section>
+</Base>

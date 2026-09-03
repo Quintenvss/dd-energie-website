@@ -1,0 +1,153 @@
+---
+import Base from '../layouts/Base.astro';
+import Eyebrow from '../components/Eyebrow.astro';
+import ProductCard from '../components/ProductCard.astro';
+import Steps from '../components/Steps.astro';
+import FAQ from '../components/FAQ.astro';
+import { thuisbatterijen } from '../data/products';
+import { faqThuisbatterij, faqSchema } from '../data/faq';
+import { url } from '../lib/links';
+---
+
+<Base
+  title="Thuisbatterij plaatsen | Bespaar slim op energie — DD Energie"
+  description="Thuisbatterij laten plaatsen? Tot 70% zelfverbruik, klaar voor dynamische tarieven en het einde van saldering. Vanaf € 3.700 incl. installatie."
+  schema={[faqSchema(faqThuisbatterij, 'https://ddenergie.nl/thuisbatterij-plaatsen/')]}
+>
+  <!-- Hero -->
+  <section class="bg-pine-900 text-white">
+    <div class="mx-auto grid max-w-6xl items-center gap-12 px-4 py-16 sm:px-6 lg:grid-cols-2">
+      <div>
+        <Eyebrow label="Thuisbatterij" level={4} tone="light" />
+        <h1 class="font-display mt-4 text-4xl font-bold tracking-tight sm:text-5xl">
+          Haal het maximale uit je <span class="hl">eigen stroom</span>
+        </h1>
+        <p class="mt-5 max-w-lg leading-relaxed text-white/75">
+          Een thuisbatterij slaat je overtollige zonnestroom op, zodat je die gebruikt wanneer
+          jíj wilt — ook 's avonds of bij weinig zon. Zo word je onafhankelijker van het net en
+          van stijgende tarieven.
+        </p>
+        <ul class="mt-7 space-y-3 text-sm font-medium">
+          {
+            [
+              'Tot 70% zelfverbruik van je zonnestroom',
+              'Klaar voor dynamische stroomtarieven',
+              'Voorbereid op het einde van saldering (2027)',
+              'Betrouwbare opslag, ecologisch én financieel slim',
+            ].map((punt) => (
+              <li class="flex items-center gap-3">
+                <span class="chargebar text-stroom" aria-hidden="true">
+                  <i class="on" /><i class="on" /><i class="on" />
+                </span>
+                {punt}
+              </li>
+            ))
+          }
+        </ul>
+        <div class="mt-9 flex flex-wrap gap-3">
+          <a href={url('/offerte-aanvragen/')} class="btn btn-lime">Offerte aanvragen</a>
+          <a href="#batterijen" class="btn btn-outline-light">Bekijk de topmodellen</a>
+        </div>
+      </div>
+
+      <div
+        class="reveal hidden max-w-sm justify-self-center rounded-3xl border border-white/10 bg-pine-950 p-7 shadow-2xl shadow-pine-950/40 lg:block lg:w-full"
+        role="img"
+        aria-label="Voorbeeldweergave van een thuisbatterij die oplaadt tot 78 procent"
+      >
+        <div class="flex items-center justify-between">
+          <p class="text-sm font-semibold text-white">Thuisbatterij</p>
+          <p class="flex items-center gap-2 font-mono text-[10px] tracking-widest text-stroom uppercase">
+            <span class="relative flex size-2">
+              <span class="absolute inline-flex h-full w-full animate-ping rounded-full bg-stroom opacity-60"></span>
+              <span class="relative inline-flex size-2 rounded-full bg-stroom"></span>
+            </span>
+            opladen
+          </p>
+        </div>
+
+        <p class="mt-6 font-mono text-6xl text-white">78<span class="text-2xl text-white/45">%</span></p>
+        <div class="mt-4 flex gap-1.5" aria-hidden="true">
+          {
+            Array.from({ length: 10 }, (_, i) => (
+              <span
+                class:list={['h-2.5 flex-1 rounded-full', i < 8 ? 'bg-stroom' : 'bg-white/10']}
+              />
+            ))
+          }
+        </div>
+
+        <dl class="mt-7 grid grid-cols-2 gap-4 border-t border-white/10 pt-5">
+          <div>
+            <dd class="font-mono text-base text-white">8,1 kWh</dd>
+            <dt class="text-xs text-white/45">beschikbaar</dt>
+          </div>
+          <div>
+            <dd class="font-mono text-base text-white">6,2 kWh</dd>
+            <dt class="text-xs text-white/45">vandaag geladen</dt>
+          </div>
+        </dl>
+        <p class="mt-5 font-mono text-[10px] tracking-widest text-white/35 uppercase">voorbeeldweergave</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Hoe werkt het -->
+  <section class="mx-auto max-w-6xl px-4 py-20 sm:px-6">
+    <div class="grid items-start gap-12 lg:grid-cols-2">
+      <div class="reveal">
+        <Eyebrow label="Hoe het werkt" level={3} tone="stroom" />
+        <h2 class="font-display mt-3 text-3xl font-bold tracking-tight text-pine-900">
+          Overdag opslaan, 's avonds gebruiken
+        </h2>
+        <p class="mt-4 leading-relaxed text-ink/75">
+          Overdag wekken je zonnepanelen vaak meer op dan je verbruikt. Dat overschot gaat nu
+          tegen een lage vergoeding het net op. Een thuisbatterij slaat het op, zodat je er
+          's avonds je eigen stroom mee gebruikt in plaats van dure netstroom.
+        </p>
+        <p class="mt-4 leading-relaxed text-ink/75">
+          Een slim energiemanagementsysteem (EMS) stuurt het laden en ontladen automatisch aan
+          op basis van je verbruik én de actuele stroomprijzen. Met een dynamisch contract laadt
+          je batterij zelfs op wanneer stroom goedkoop is — ook zonder zonnepanelen.
+        </p>
+      </div>
+      <dl class="grid gap-4 sm:grid-cols-2">
+        {
+          [
+            { cijfer: '70%', label: 'zelfverbruik mogelijk met batterij' },
+            { cijfer: '5–8 jr', label: 'gemiddelde terugverdientijd' },
+            { cijfer: '10–15 jr', label: 'levensduur, 10 jaar garantie' },
+            { cijfer: '2027', label: 'einde saldering — wees voorbereid' },
+          ].map((stat) => (
+            <div class="reveal rounded-2xl border border-pine-900/10 bg-white p-6">
+              <dt class="order-2 mt-1 text-sm text-ink/60">{stat.label}</dt>
+              <dd class="font-mono text-3xl font-medium text-pine-900">{stat.cijfer}</dd>
+            </div>
+          ))
+        }
+      </dl>
+    </div>
+  </section>
+
+  <!-- Top 3 -->
+  <section id="batterijen" class="border-y border-pine-900/10 bg-white/60">
+    <div class="mx-auto max-w-6xl px-4 py-20 sm:px-6">
+      <div class="reveal max-w-2xl">
+        <Eyebrow label="Top 3 thuisbatterijen" level={5} tone="stroom" />
+        <h2 class="font-display mt-3 text-3xl font-bold tracking-tight text-pine-900 sm:text-4xl">
+          Onze meest gekozen batterijen
+        </h2>
+        <p class="mt-3 text-ink/70">
+          Alle prijzen zijn totaalprijzen inclusief installatie door onze eigen gecertificeerde
+          monteurs.
+        </p>
+      </div>
+      <div class="mt-12 grid gap-6 md:grid-cols-3">
+        {thuisbatterijen.map((p) => <ProductCard product={p} tone="stroom" />)}
+      </div>
+    </div>
+  </section>
+
+  <Steps />
+  <FAQ items={faqThuisbatterij} title="Veelgestelde vragen over thuisbatterijen" />
+</Base>

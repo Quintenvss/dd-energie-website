@@ -1,0 +1,48 @@
+---
+import { url } from '../lib/links';
+
+const year = new Date().getFullYear();
+---
+
+<footer class="bg-pine-950 text-white">
+  <div class="mx-auto grid max-w-6xl gap-10 px-4 py-14 sm:px-6 md:grid-cols-4">
+    <div class="md:col-span-2">
+      <p class="font-display text-xl font-bold">DD<span class="text-stroom">Energie</span></p>
+      <p class="mt-3 max-w-sm text-sm leading-relaxed text-white/70">
+        Duurzaam Direct Energie helpt Nederlandse huishoudens besparen met thuisbatterijen en
+        warmtepompen — van persoonlijk advies tot vakkundige installatie.
+      </p>
+      <p class="mt-5 font-mono text-xs tracking-wide text-white/50 uppercase">
+        InstallQ · STEK · VCA · NEN 1010 gecertificeerd
+      </p>
+    </div>
+
+    <nav aria-label="Footer">
+      <p class="font-mono text-xs tracking-widest text-stroom uppercase">Menu</p>
+      <ul class="mt-3 space-y-2 text-sm text-white/80">
+        <li><a class="hover:text-white" href={url('/thuisbatterij-plaatsen/')}>Thuisbatterij plaatsen</a></li>
+        <li><a class="hover:text-white" href={url('/warmtepomp-plaatsen/')}>Warmtepomp plaatsen</a></li>
+        <li><a class="hover:text-white" href={url('/over-ons/')}>Over ons</a></li>
+        <li><a class="hover:text-white" href={url('/blog/')}>Blog</a></li>
+        <li><a class="hover:text-white" href={url('/offerte-aanvragen/')}>Offerte aanvragen</a></li>
+      </ul>
+    </nav>
+
+    <div>
+      <p class="font-mono text-xs tracking-widest text-stroom uppercase">Contact</p>
+      <ul class="mt-3 space-y-2 text-sm text-white/80">
+        <li><a class="hover:text-white" href="mailto:info@ddenergie.nl">info@ddenergie.nl</a></li>
+        <li><a class="hover:text-white" href="tel:+31850608951">085 060 8951</a></li>
+        <li>Nikkelweg 233<br />2401 MM Alphen aan den Rijn</li>
+      </ul>
+    </div>
+  </div>
+  <div class="border-t border-white/10">
+    <div
+      class="mx-auto flex max-w-6xl flex-wrap items-center justify-between gap-2 px-4 py-4 text-xs text-white/50 sm:px-6"
+    >
+      <p>© {year} Duurzaam Direct Energie</p>
+      <p>KvK · Privacyverklaring · Cookiebeleid</p>
+    </div>
+  </div>
+</footer>

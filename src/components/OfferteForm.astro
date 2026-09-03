@@ -1,0 +1,92 @@
+---
+/**
+ * Offerteformulier. Zet FORM_ENDPOINT naar een n8n-webhook, Formspree-URL
+ * of eigen API. Zolang die leeg is, opent verzenden een voorgevulde e-mail.
+ */
+interface Props {
+  compact?: boolean;
+}
+const { compact = false } = Astro.props;
+const FORM_ENDPOINT = '';
+const inputClass =
+  'w-full rounded-xl border border-pine-900/15 bg-white px-4 py-3 text-sm placeholder:text-ink/40 focus:border-pine-600';
+---
+
+<form class="offerte-form grid gap-3" data-endpoint={FORM_ENDPOINT} novalidate>
+  <div class="grid gap-3 sm:grid-cols-2">
+    <label class="grid gap-1.5">
+      <span class="text-xs font-semibold">Naam*</span>
+      <input class={inputClass} type="text" name="naam" autocomplete="name" required />
+    </label>
+    <label class="grid gap-1.5">
+      <span class="text-xs font-semibold">Telefoonnummer*</span>
+      <input class={inputClass} type="tel" name="telefoon" autocomplete="tel" required />
+    </label>
+  </div>
+  <label class="grid gap-1.5">
+    <span class="text-xs font-semibold">E-mailadres*</span>
+    <input class={inputClass} type="email" name="email" autocomplete="email" required />
+  </label>
+  <div class="grid grid-cols-[1fr_auto] gap-3">
+    <label class="grid gap-1.5">
+      <span class="text-xs font-semibold">Postcode*</span>
+      <input
+        class={inputClass}
+        type="text"
+        name="postcode"
+        autocomplete="postal-code"
+        placeholder="1234 AB"
+        required
+      />
+    </label>
+    <label class="grid gap-1.5">
+      <span class="text-xs font-semibold">Huisnummer*</span>
+      <input class:list={[inputClass, 'w-28']} type="text" name="huisnummer" required />
+    </label>
+  </div>
+
+  {
+    !compact && (
+      <>
+        <fieldset class="mt-1 grid gap-2">
+          <legend class="text-xs font-semibold">Waar kunnen we je mee helpen?</legend>
+          {[
+            'Advies over een warmtepomp',
+            'Warmtepomp installatie',
+            'Advies over een thuisbatterij',
+            'Thuisbatterij installatie',
+            'Onderhoud of upgrade',
+          ].map((opt) => (
+            <label class="flex items-center gap-2.5 text-sm">
+              <input type="checkbox" name="hulp" value={opt} class="size-4 accent-pine-700" />
+              {opt}
+            </label>
+          ))}
+        </fieldset>
+        <label class="grid gap-1.5">
+          <span class="text-xs font-semibold">Wanneer wil je gebeld worden?</span>
+          <select class={inputClass} name="belmoment">
+            <option>Maakt niet uit</option>
+            <option>Ochtend</option>
+            <option>Middag</option>
+            <option>Avond</option>
+          </select>
+        </label>
+        <label class="grid gap-1.5">
+          <span class="text-xs font-semibold">Vraag of opmerking</span>
+          <textarea class={inputClass} name="bericht" rows="3" />
+        </label>
+      </>
+    )
+  }
+
+  <button type="submit" class="btn btn-dark mt-1 w-full cursor-pointer">Offerte ontvangen</button>
+  <p class="text-center text-xs text-ink/50">
+    Vrijblijvend · reactie binnen 1 werkdag · gegevens veilig behandeld
+  </p>
+  <p class="form-status hidden rounded-xl px-4 py-3 text-sm" role="status"></p>
+</form>
+
+<script>
+  import '../scripts/form';
+</script>

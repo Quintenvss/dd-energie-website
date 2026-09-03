@@ -1,0 +1,85 @@
+---
+import Base from '../layouts/Base.astro';
+import Eyebrow from '../components/Eyebrow.astro';
+import Steps from '../components/Steps.astro';
+import Reviews from '../components/Reviews.astro';
+
+const certificaten = [
+  {
+    naam: 'InstallQ erkend',
+    tekst:
+      'Erkenning voor zonnestroomsystemen (PV) die onze deskundigheid, vakbekwaamheid en veilige werkwijze bevestigt.',
+  },
+  {
+    naam: 'STEK erkend',
+    tekst:
+      'Gecertificeerd voor koeltechniek, airconditioning en warmtepompen — veiligheid en vakmanschap voorop.',
+  },
+  {
+    naam: 'VCA gecertificeerd',
+    tekst:
+      'Wij voldoen aan strikte veiligheidsnormen en -procedures, voor een veilige werkomgeving bij jou thuis.',
+  },
+  {
+    naam: 'NEN 1010',
+    tekst:
+      'Onze elektrische installaties voldoen aan de Nederlandse norm voor laagspanningsinstallaties.',
+  },
+];
+---
+
+<Base
+  title="Over ons — Duurzaam Direct Energie"
+  description="Maak kennis met Duurzaam Direct Energie: een gespecialiseerd team dat Nederlandse huishoudens verduurzaamt met thuisbatterijen en warmtepompen."
+>
+  <section class="mx-auto max-w-6xl px-4 py-16 sm:px-6">
+    <div class="max-w-2xl">
+      <Eyebrow label="Over ons" level={3} />
+      <h1 class="font-display mt-4 text-4xl font-bold tracking-tight text-pine-900 sm:text-5xl">
+        Elke dag maken we Nederland een beetje groener
+      </h1>
+      <p class="mt-5 leading-relaxed text-ink/70">
+        Duurzaam Direct Energie is een klein, gespecialiseerd team met jarenlange ervaring en
+        duizenden installaties door heel Nederland. Wij weten precies waar je op moet letten bij
+        een thuisbatterij of warmtepomp — en begeleiden je persoonlijk van eerste advies tot
+        werkende installatie.
+      </p>
+      <p class="mt-4 leading-relaxed text-ink/70">
+        We geloven in de kracht van hernieuwbare energie en willen die voor iedereen toegankelijk
+        maken. Zo verklein je je ecologische voetafdruk én bespaar je flink op je energiekosten.
+      </p>
+    </div>
+  </section>
+
+  <section class="border-y border-pine-900/10 bg-white/60">
+    <div class="mx-auto max-w-6xl px-4 py-20 sm:px-6">
+      <div class="reveal max-w-2xl">
+        <Eyebrow label="Gecertificeerd vakmanschap" level={5} />
+        <h2 class="font-display mt-3 text-3xl font-bold tracking-tight text-pine-900 sm:text-4xl">
+          Onze certificeringen
+        </h2>
+      </div>
+      <div class="mt-10 grid gap-6 sm:grid-cols-2">
+        {
+          certificaten.map((cert) => (
+            <div class="reveal rounded-2xl border border-pine-900/10 bg-white p-7">
+              <div class="flex items-center gap-3">
+                <span class="flex size-10 items-center justify-center rounded-xl bg-pine-100">
+                  <svg class="size-5 text-pine-700" viewBox="0 0 20 20" fill="none" aria-hidden="true">
+                    <path d="M10 1.5 3 4.5v5c0 4.2 3 7.6 7 9 4-1.4 7-4.8 7-9v-5l-7-3Z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" />
+                    <path d="m6.8 10 2.2 2.2 4.2-4.4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" />
+                  </svg>
+                </span>
+                <h3 class="font-display text-lg font-bold text-pine-900">{cert.naam}</h3>
+              </div>
+              <p class="mt-4 text-sm leading-relaxed text-ink/70">{cert.tekst}</p>
+            </div>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <Reviews />
+  <Steps />
+</Base>

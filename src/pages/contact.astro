@@ -1,0 +1,72 @@
+---
+import Base from '../layouts/Base.astro';
+import Eyebrow from '../components/Eyebrow.astro';
+---
+
+<Base
+  title="Contact — Duurzaam Direct Energie"
+  description="Neem contact op met Duurzaam Direct Energie in Alphen aan den Rijn. Bel 085 060 8951 of mail info@ddenergie.nl — we helpen je graag."
+>
+  <section class="mx-auto grid max-w-6xl gap-12 px-4 py-16 sm:px-6 lg:grid-cols-2">
+    <div>
+      <Eyebrow label="Contact" level={3} />
+      <h1 class="font-display mt-4 text-4xl font-bold tracking-tight text-pine-900 sm:text-5xl">
+        We helpen je graag verder
+      </h1>
+      <p class="mt-5 max-w-md leading-relaxed text-ink/70">
+        Vragen over een thuisbatterij, warmtepomp of een lopende installatie? Bel, mail of loop
+        binnen — ons team staat op werkdagen van 09:00 tot 17:00 voor je klaar.
+      </p>
+      <dl class="mt-9 space-y-6 text-sm">
+        <div>
+          <dt class="font-mono text-xs tracking-widest text-pine-600 uppercase">Telefoon</dt>
+          <dd class="mt-1 text-lg font-semibold">
+            <a href="tel:+31850608951" class="text-pine-900 hover:text-pine-600">085 060 8951</a>
+          </dd>
+        </div>
+        <div>
+          <dt class="font-mono text-xs tracking-widest text-pine-600 uppercase">E-mail</dt>
+          <dd class="mt-1 text-lg font-semibold">
+            <a href="mailto:info@ddenergie.nl" class="text-pine-900 hover:text-pine-600">info@ddenergie.nl</a>
+          </dd>
+        </div>
+        <div>
+          <dt class="font-mono text-xs tracking-widest text-pine-600 uppercase">Bezoekadres</dt>
+          <dd class="mt-1 text-lg font-semibold text-pine-900">
+            Nikkelweg 233<br />2401 MM Alphen aan den Rijn
+          </dd>
+        </div>
+      </dl>
+    </div>
+
+    <form
+      class="offerte-form reveal grid content-start gap-3 rounded-3xl border border-pine-900/10 bg-white p-7 shadow-xl shadow-pine-900/5 sm:p-9"
+      data-endpoint=""
+      novalidate
+    >
+      <h2 class="font-display text-xl font-bold text-pine-900">Stuur ons een bericht</h2>
+      <label class="mt-2 grid gap-1.5">
+        <span class="text-xs font-semibold">Naam*</span>
+        <input class="w-full rounded-xl border border-pine-900/15 bg-white px-4 py-3 text-sm" type="text" name="naam" autocomplete="name" required />
+      </label>
+      <label class="grid gap-1.5">
+        <span class="text-xs font-semibold">E-mailadres*</span>
+        <input class="w-full rounded-xl border border-pine-900/15 bg-white px-4 py-3 text-sm" type="email" name="email" autocomplete="email" required />
+      </label>
+      <label class="grid gap-1.5">
+        <span class="text-xs font-semibold">Telefoonnummer</span>
+        <input class="w-full rounded-xl border border-pine-900/15 bg-white px-4 py-3 text-sm" type="tel" name="telefoon" autocomplete="tel" />
+      </label>
+      <label class="grid gap-1.5">
+        <span class="text-xs font-semibold">Bericht*</span>
+        <textarea class="w-full rounded-xl border border-pine-900/15 bg-white px-4 py-3 text-sm" name="bericht" rows="5" required></textarea>
+      </label>
+      <button type="submit" class="btn btn-dark mt-1 w-full cursor-pointer">Verzenden</button>
+      <p class="form-status hidden rounded-xl px-4 py-3 text-sm" role="status"></p>
+    </form>
+  </section>
+</Base>
+
+<script>
+  import '../scripts/form';
+</script>

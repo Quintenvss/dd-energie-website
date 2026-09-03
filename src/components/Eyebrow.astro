@@ -1,0 +1,22 @@
+---
+interface Props {
+  label: string;
+  /** aantal gevulde segmenten van 5 — puur visueel ritme per sectie */
+  level?: number;
+  tone?: 'stroom' | 'warmte' | 'pine' | 'light';
+}
+const { label, level = 3, tone = 'pine' } = Astro.props;
+const tones = {
+  stroom: 'text-stroom-dark',
+  warmte: 'text-warmte-dark',
+  pine: 'text-pine-600',
+  light: 'text-stroom',
+};
+---
+
+<p class:list={['eyebrow', tones[tone]]}>
+  <span class="chargebar" aria-hidden="true">
+    {Array.from({ length: 5 }, (_, i) => <i class:list={[i < level && 'on']} />)}
+  </span>
+  {label}
+</p>

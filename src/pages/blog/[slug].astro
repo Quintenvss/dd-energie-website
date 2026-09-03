@@ -1,0 +1,58 @@
+---
+import Base from '../../layouts/Base.astro';
+import { getCollection, render } from 'astro:content';
+import { url } from '../../lib/links';
+
+export async function getStaticPaths() {
+  const posts = await getCollection('blog');
+  return posts.map((post) => ({ params: { slug: post.id }, props: { post } }));
+}
+
+const { post } = Astro.props;
+const { Content } = await render(post);
+const fmt = new Intl.DateTimeFormat('nl-NL', { day: 'numeric', month: 'long', year: 'numeric' });
+
+const articleSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Article',
+  headline: post.data.title,
+  description: post.data.description,
+  datePublished: post.data.pubDate.toISOString(),
+  author: { '@type': 'Organization', name: 'Duurzaam Direct Energie' },
+  publisher: { '@id': 'https://ddenergie.nl/#organization' },
+};
+---
+
+<Base title={`${post.data.title} — DD Energie`} description={post.data.description} schema={[articleSchema]}>
+  <article class="mx-auto max-w-3xl px-4 py-16 sm:px-6">
+    <nav class="text-xs text-ink/50" aria-label="Kruimelpad">
+      <a href={url('/')} class="hover:text-pine-600">Home</a> /
+      <a href={url('/blog/')} class="hover:text-pine-600">Blog</a>
+    </nav>
+    <p
+      class:list={[
+        'mt-6 font-mono text-[11px] tracking-widest uppercase',
+        post.data.category === 'Warmtepompen' ? 'text-warmte-dark' : 'text-stroom-dark',
+      ]}
+    >
+      {post.data.category} · {fmt.format(post.data.pubDate)}
+    </p>
+    <h1 class="font-display mt-3 text-3xl font-bold tracking-tight text-pine-900 sm:text-4xl">
+      {post.data.title}
+    </h1>
+
+    <div
+      class="prose-headings:font-display prose-headings:text-pine-900 mt-8 space-y-4 leading-relaxed text-ink/85 [&_a]:font-semibold [&_a]:text-pine-700 [&_a]:underline [&_blockquote]:rounded-xl [&_blockquote]:bg-pine-100 [&_blockquote]:px-5 [&_blockquote]:py-3 [&_h2]:font-display [&_h2]:mt-8 [&_h2]:text-2xl [&_h2]:font-bold [&_h2]:text-pine-900 [&_li]:my-1 [&_ol]:list-decimal [&_ol]:pl-5 [&_table]:w-full [&_table]:text-sm [&_td]:border-t [&_td]:border-pine-900/10 [&_td]:px-3 [&_td]:py-2 [&_th]:px-3 [&_th]:py-2 [&_th]:text-left [&_ul]:list-disc [&_ul]:pl-5"
+    >
+      <Content />
+    </div>
+
+    <aside class="mt-12 rounded-2xl bg-pine-900 px-7 py-8 text-white">
+      <p class="font-display text-xl font-bold">Weten wat dit voor jouw woning betekent?</p>
+      <p class="mt-2 text-sm text-white/75">
+        Onze adviseurs rekenen je situatie vrijblijvend door — binnen 1 werkdag reactie.
+      </p>
+      <a href={url('/offerte-aanvragen/')} class="btn btn-lime mt-5">Offerte aanvragen</a>
+    </aside>
+  </article>
+</Base>

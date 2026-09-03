@@ -1,0 +1,24 @@
+---
+/**
+ * Statistiekenband: echte, verifieerbare cijfers van DD Energie.
+ */
+const stats = [
+  { value: '10,0', label: 'klantscore uit 101 onafhankelijke reviews' },
+  { value: '1', label: 'werkdag — dan heb je reactie op je aanvraag' },
+  { value: '4×', label: 'gecertificeerd: InstallQ · STEK · VCA · NEN 1010' },
+  { value: '€ 0', label: 'vooraf betalen — je betaalt pas achteraf' },
+];
+---
+
+<section class="border-y border-pine-900/10 bg-white">
+  <div class="mx-auto grid max-w-6xl grid-cols-2 gap-x-6 gap-y-8 px-4 py-10 sm:px-6 lg:grid-cols-4">
+    {
+      stats.map((stat) => (
+        <div class="reveal">
+          <p class="font-mono text-3xl font-medium text-pine-900 sm:text-4xl">{stat.value}</p>
+          <p class="mt-2 max-w-[16rem] text-sm leading-snug text-ink/60">{stat.label}</p>
+        </div>
+      ))
+    }
+  </div>
+</section>

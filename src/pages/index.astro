@@ -1,0 +1,173 @@
+---
+import Base from '../layouts/Base.astro';
+import Eyebrow from '../components/Eyebrow.astro';
+import EnergyFlow from '../components/EnergyFlow.astro';
+import HeatFlow from '../components/HeatFlow.astro';
+import OfferteForm from '../components/OfferteForm.astro';
+import TrustStrip from '../components/TrustStrip.astro';
+import Steps from '../components/Steps.astro';
+import Reviews from '../components/Reviews.astro';
+import FAQ from '../components/FAQ.astro';
+import { faqHome, faqSchema } from '../data/faq';
+import { url } from '../lib/links';
+---
+
+<Base
+  title="Thuisbatterij & Warmtepomp | Duurzaam Direct Energie"
+  description="Verlaag je energiekosten met een thuisbatterij of warmtepomp. Persoonlijk advies, vakkundige installatie en een vrijblijvende offerte binnen 1 werkdag."
+  schema={[faqSchema(faqHome, 'https://ddenergie.nl/')]}
+>
+  <!-- Hero -->
+  <section class="relative overflow-hidden bg-pine-950 text-white">
+    <div class="absolute inset-0 -z-0" aria-hidden="true">
+      <div class="absolute -top-32 right-[-15%] size-[34rem] rounded-full bg-pine-700/30 blur-3xl"></div>
+      <div class="absolute bottom-[-40%] left-[-10%] size-[28rem] rounded-full bg-stroom/10 blur-3xl"></div>
+    </div>
+    <div class="relative mx-auto grid max-w-6xl items-center gap-12 px-4 pt-16 pb-16 sm:px-6 lg:grid-cols-[1.1fr_0.9fr] lg:pt-20">
+      <div>
+        <Eyebrow label="Thuisbatterijen · Warmtepompen" level={4} tone="light" />
+        <h1 class="font-display mt-5 text-4xl font-bold tracking-tight sm:text-5xl lg:text-[3.5rem] lg:leading-[1.08]">
+          Je energierekening <span class="hl">structureel omlaag</span>.
+        </h1>
+        <p class="mt-6 max-w-lg text-lg leading-relaxed text-white/75">
+          Thuisbatterijen en warmtepompen, geleverd én geïnstalleerd door eigen gecertificeerde
+          monteurs. Van eerlijk advies tot werkende installatie — en je betaalt pas achteraf.
+        </p>
+        <div class="mt-9 flex flex-wrap gap-3">
+          <a href={url('/offerte-aanvragen/')} class="btn btn-lime">Offerte aanvragen</a>
+          <a href="tel:+31850608951" class="btn btn-outline-light">Bel 085 060 8951</a>
+        </div>
+        <ul class="mt-8 flex flex-wrap gap-x-6 gap-y-2.5 text-sm text-white/70">
+          {
+            ['Offerte binnen 1 werkdag', 'InstallQ · STEK · VCA erkend', 'Betaal pas achteraf'].map((usp) => (
+              <li class="flex items-center gap-2">
+                <svg class="size-4 shrink-0 text-stroom" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+                  <path d="M2 8.5 6 12l8-8" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" />
+                </svg>
+                {usp}
+              </li>
+            ))
+          }
+        </ul>
+      </div>
+
+      <div class="reveal rounded-3xl bg-white p-7 text-ink shadow-2xl shadow-pine-950/40 sm:p-8">
+        <h2 class="font-display text-xl font-bold text-pine-900">Bereken je besparing</h2>
+        <p class="mt-1.5 mb-5 text-sm text-ink/60">
+          Laat je gegevens achter en ontvang binnen 1 werkdag een vrijblijvende offerte op maat.
+        </p>
+        <OfferteForm compact />
+      </div>
+    </div>
+  </section>
+
+  <TrustStrip />
+
+  <!-- Productduo -->
+  <section class="mx-auto max-w-6xl px-4 py-20 sm:px-6">
+    <div class="reveal max-w-2xl">
+      <Eyebrow label="Onze oplossingen" level={2} />
+      <h2 class="font-display mt-3 text-3xl font-bold tracking-tight text-pine-900 sm:text-4xl">
+        Stroom slim opslaan.<br />Warmte slim opwekken.
+      </h2>
+    </div>
+
+    <div class="mt-10 grid gap-6 md:grid-cols-2">
+      <a
+        href={url('/thuisbatterij-plaatsen/')}
+        class="reveal group relative overflow-hidden rounded-3xl bg-pine-900 p-8 text-white transition hover:-translate-y-1 sm:p-10"
+      >
+        <span class="chargebar text-stroom" aria-hidden="true">
+          <i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i></i>
+        </span>
+        <h3 class="font-display mt-4 text-2xl font-bold sm:text-3xl">Thuisbatterij</h3>
+        <p class="mt-3 max-w-sm text-sm leading-relaxed text-white/75">
+          Haal het maximale uit je zonnepanelen: tot 70% zelfverbruik, klaar voor dynamische
+          tarieven en het einde van de saldering in 2027.
+        </p>
+        <p class="mt-6 font-mono text-sm text-stroom">vanaf € 3.700 incl. installatie</p>
+        <span class="mt-6 inline-flex items-center gap-2 text-sm font-semibold text-stroom">
+          Bekijk thuisbatterijen
+          <svg class="size-4 transition-transform group-hover:translate-x-1" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+            <path d="M3 8h10m-4-4 4 4-4 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+          </svg>
+        </span>
+      </a>
+
+      <a
+        href={url('/warmtepomp-plaatsen/')}
+        class="reveal group relative overflow-hidden rounded-3xl border border-pine-900/10 bg-white p-8 transition hover:-translate-y-1 sm:p-10"
+      >
+        <span class="chargebar text-warmte-dark" aria-hidden="true">
+          <i class="on"></i><i class="on"></i><i class="on"></i><i></i><i></i>
+        </span>
+        <h3 class="font-display mt-4 text-2xl font-bold text-pine-900 sm:text-3xl">Warmtepomp</h3>
+        <p class="mt-3 max-w-sm text-sm leading-relaxed text-ink/70">
+          Efficiënt verwarmen én koelen zonder fossiele brandstoffen. Hybride of all-electric,
+          stil en energiezuinig — met ISDE-subsidie.
+        </p>
+        <p class="mt-6 font-mono text-sm text-warmte-dark">vanaf € 3.894 incl. subsidie</p>
+        <span class="mt-6 inline-flex items-center gap-2 text-sm font-semibold text-warmte-dark">
+          Bekijk warmtepompen
+          <svg class="size-4 transition-transform group-hover:translate-x-1" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+            <path d="M3 8h10m-4-4 4 4-4 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+          </svg>
+        </span>
+      </a>
+    </div>
+  </section>
+
+  <!-- Slim samenspel: batterij + warmtepomp -->
+  <section class="border-y border-pine-900/10 bg-white/60">
+    <div class="mx-auto max-w-6xl px-4 py-20 sm:px-6">
+      <div class="reveal max-w-2xl">
+        <Eyebrow label="Slim samenspel" level={4} />
+        <h2 class="font-display mt-3 text-3xl font-bold tracking-tight text-pine-900 sm:text-4xl">
+          Eén systeem dat samenwerkt
+        </h2>
+        <p class="mt-4 leading-relaxed text-ink/70">
+          Je thuisbatterij slaat goedkope en zelf opgewekte stroom op; je warmtepomp zet die om
+          in comfort. Samen halen ze het maximale uit elke kilowattuur — automatisch, dag en
+          nacht.
+        </p>
+      </div>
+      <div class="mt-12 grid items-start justify-items-center gap-8 md:grid-cols-2">
+        <div class="reveal w-full max-w-md">
+          <EnergyFlow />
+          <p class="mt-4 text-center text-sm text-ink/60">
+            <a href={url('/thuisbatterij-plaatsen/')} class="font-semibold text-pine-700 hover:text-pine-600">Meer over thuisbatterijen →</a>
+          </p>
+        </div>
+        <div class="reveal w-full max-w-md">
+          <HeatFlow />
+          <p class="mt-4 text-center text-sm text-ink/60">
+            <a href={url('/warmtepomp-plaatsen/')} class="font-semibold text-pine-700 hover:text-pine-600">Meer over warmtepompen →</a>
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <Steps />
+  <Reviews />
+  <FAQ items={faqHome} />
+
+  <!-- Slot-CTA -->
+  <section class="mx-auto max-w-6xl px-4 pb-20 sm:px-6">
+    <div class="reveal rounded-3xl bg-pine-900 px-8 py-14 text-center text-white sm:px-12">
+      <h2 class="font-display mx-auto max-w-2xl text-3xl font-bold tracking-tight sm:text-4xl">
+        Klaar om te besparen op je energierekening?
+      </h2>
+      <p class="mx-auto mt-4 max-w-xl text-white/75">
+        Vraag vandaag een vrijblijvende offerte aan. Binnen 1 werkdag weet je waar je aan toe bent.
+      </p>
+      <div class="mt-8 flex flex-wrap justify-center gap-3">
+        <a href={url('/offerte-aanvragen/')} class="btn btn-lime">Offerte aanvragen</a>
+        <a href="tel:+31850608951" class="btn btn-outline-light">Bel 085 060 8951</a>
+      </div>
+      <p class="mt-6 text-sm text-white/55">
+        Reactie binnen 1 werkdag · gratis en vrijblijvend
+      </p>
+    </div>
+  </section>
+</Base>

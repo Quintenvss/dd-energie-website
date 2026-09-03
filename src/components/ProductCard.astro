@@ -1,0 +1,51 @@
+---
+import type { Product } from '../data/products';
+import { url } from '../lib/links';
+
+interface Props {
+  product: Product;
+  tone: 'stroom' | 'warmte';
+}
+const { product, tone } = Astro.props;
+const accentText = tone === 'stroom' ? 'text-stroom-dark' : 'text-warmte-dark';
+const accentBg = tone === 'stroom' ? 'bg-stroom' : 'bg-warmte';
+---
+
+<article
+  class:list={[
+    'reveal relative flex flex-col rounded-2xl border bg-white p-7',
+    product.popular ? 'border-pine-700 shadow-lg' : 'border-pine-900/10',
+  ]}
+>
+  {
+    product.popular && (
+      <p class="absolute -top-3 left-6 rounded-full bg-pine-900 px-3 py-1 font-mono text-[11px] tracking-wider text-stroom uppercase">
+        meest gekozen
+      </p>
+    )
+  }
+  <h3 class="font-display text-lg font-bold text-pine-900">{product.name}</h3>
+  <p class="mt-3">
+    <span class="font-mono text-2xl font-medium text-ink">{product.price}</span>
+    <span class="block text-xs text-ink/55">{product.priceNote}</span>
+  </p>
+  <ul class="mt-5 flex-1 space-y-2.5 text-sm text-ink/80">
+    {
+      product.points.map((point) => (
+        <li class="flex gap-2.5">
+          <span class:list={['mt-1.5 h-2 w-3 shrink-0 rounded-[2px]', accentBg]} aria-hidden="true" />
+          {point}
+        </li>
+      ))
+    }
+  </ul>
+  <a
+    href={url('/offerte-aanvragen/')}
+    class:list={[
+      'btn mt-6 block border border-pine-900/15 !py-3 hover:bg-pine-900 hover:!text-white',
+      accentText,
+    ]}
+  >
+    Ontvang gratis offerte
+  </a>
+</article>
