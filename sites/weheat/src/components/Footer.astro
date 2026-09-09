@@ -1,0 +1,59 @@
+---
+import { site } from '../sites';
+import Wordmark from './Wordmark.astro';
+import { url } from '../lib/links';
+const year = new Date().getFullYear();
+// weheatofferte.nl krijgt een donkere footer, de andere twee een lichte
+const dark = site.theme === 'ember';
+const muted = dark ? 'text-white/65' : 'text-muted';
+const link = dark ? 'hover:text-accent' : 'hover:text-primary';
+---
+
+<footer class:list={['mt-auto border-t', dark ? 'border-white/10 bg-dark text-white' : 'border-line bg-surface']}>
+  <div class="mx-auto grid max-w-6xl gap-10 px-4 py-12 sm:px-6 md:grid-cols-[1.4fr_1fr_1fr]">
+    <div>
+      <Wordmark class="text-lg" />
+      <p class:list={['mt-3 max-w-md text-sm leading-relaxed', muted]}>
+        {site.domain} is een initiatief van Duurzaam Direct Energie en Strada Installatietechniek.
+        Aanvragen via deze site worden behandeld door een van deze erkende installateurs.
+      </p>
+      <p class:list={['mt-3 max-w-md text-xs leading-relaxed', muted]}>
+        Weheat is een merk van Weheat B.V. Deze website is niet de officiële website van Weheat.
+        Genoemde prijzen zijn vanaf-prijzen inclusief installatie; het definitieve bedrag staat in je offerte.
+        Subsidiebedragen zijn indicatief en afhankelijk van de ISDE-voorwaarden van RVO.
+      </p>
+    </div>
+    <div class="text-sm">
+      <h2 class="font-display font-bold">Contact</h2>
+      <ul class:list={['mt-3 space-y-2', muted]}>
+        <li>
+          <a href={site.phone.href} class={link}>{site.phone.display}</a>
+        </li>
+        <li>
+          <a href={`mailto:${site.funnel.fallbackEmail}`} class={link}>{site.funnel.fallbackEmail}</a>
+        </li>
+        <li>Nikkelweg 233, 2401 MM Alphen aan den Rijn</li>
+      </ul>
+    </div>
+    <div class="text-sm">
+      <h2 class="font-display font-bold">Meer</h2>
+      <ul class:list={['mt-3 space-y-2', muted]}>
+        <li><a href="#aanvraag" class={link}>{site.funnel.submitLabel}</a></li>
+        <li><a href={url('/privacy/')} class={link}>Privacyverklaring</a></li>
+        <li>
+          <a href="https://ddenergie.nl" rel="noopener" class={link}>ddenergie.nl</a>
+        </li>
+        <li>
+          <a href="https://strada-installatietechniek.nl" rel="noopener" class={link}>
+            strada-installatietechniek.nl
+          </a>
+        </li>
+      </ul>
+    </div>
+  </div>
+  <div class:list={['border-t', dark ? 'border-white/10' : 'border-line']}>
+    <p class:list={['mx-auto max-w-6xl px-4 py-4 text-xs sm:px-6', muted]}>
+      © {year} {site.name}. Alle rechten voorbehouden.
+    </p>
+  </div>
+</footer>

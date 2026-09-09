@@ -1,0 +1,22 @@
+---
+import { site } from '../sites';
+import Icon from './Icon.astro';
+---
+
+<div
+  class="sticky-cta fixed inset-x-0 bottom-0 z-30 border-t border-line bg-surface/95 p-3 backdrop-blur transition-transform md:hidden"
+  data-sticky-cta
+>
+  <div class="flex gap-2">
+    <a href={site.phone.href} class="btn btn-ghost btn-sm shrink-0" aria-label="Bel ons">
+      <Icon name="phone" class="size-4" />
+    </a>
+    <a href="#aanvraag" class="btn btn-primary btn-sm flex-1">{site.funnel.submitLabel}</a>
+  </div>
+</div>
+
+<style>
+  .sticky-cta.is-hidden {
+    transform: translateY(110%);
+  }
+</style>

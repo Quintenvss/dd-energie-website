@@ -1,0 +1,72 @@
+---
+/**
+ * Generieke privacyverklaring. Laat deze vóór livegang nakijken en vul de
+ * KvK-nummers van beide bedrijven in.
+ */
+import Base from '../layouts/Base.astro';
+import { site } from '../sites';
+---
+
+<Base title={`Privacyverklaring | ${site.name}`} description={`Privacyverklaring van ${site.domain}.`} stickyCta={false}>
+  <article class="prose mx-auto max-w-3xl px-4 py-16 sm:px-6">
+    <h1 class="font-display text-3xl font-bold tracking-tight sm:text-4xl">Privacyverklaring</h1>
+    <p class="mt-4 text-muted">Laatst bijgewerkt: september 2026</p>
+
+    <div class="mt-8 space-y-8 text-[0.95rem] leading-relaxed">
+      <section>
+        <h2 class="font-display text-xl font-bold">Wie zijn wij?</h2>
+        <p class="mt-2">
+          {site.domain} is een gezamenlijk initiatief van Duurzaam Direct Energie (Nikkelweg 233, 2401 MM Alphen aan
+          den Rijn, KvK-nummer: [invullen]) en Strada Installatietechniek (KvK-nummer: [invullen]). Beide bedrijven
+          zijn gezamenlijk verwerkingsverantwoordelijke voor de gegevens die je via deze website achterlaat.
+        </p>
+      </section>
+
+      <section>
+        <h2 class="font-display text-xl font-bold">Welke gegevens verwerken wij?</h2>
+        <p class="mt-2">Als je het aanvraagformulier invult, verwerken wij:</p>
+        <ul class="mt-2 list-disc space-y-1 pl-6">
+          <li>je naam, e-mailadres en telefoonnummer;</li>
+          <li>je postcode en huisnummer;</li>
+          <li>je antwoorden op de vragen over je woning en verwarming;</li>
+          <li>technische gegevens zoals de pagina waarvandaan je de aanvraag deed en eventuele campagnecodes (UTM).</li>
+        </ul>
+      </section>
+
+      <section>
+        <h2 class="font-display text-xl font-bold">Waarvoor gebruiken wij je gegevens?</h2>
+        <p class="mt-2">
+          Uitsluitend om contact met je op te nemen over je aanvraag en om een offerte of advies op maat te maken.
+          Je aanvraag wordt doorgestuurd naar één van de twee aangesloten installateurs, afhankelijk van je regio. Wij
+          verkopen je gegevens niet en delen ze niet met andere partijen dan hierboven genoemd.
+        </p>
+      </section>
+
+      <section>
+        <h2 class="font-display text-xl font-bold">Hoe lang bewaren wij je gegevens?</h2>
+        <p class="mt-2">
+          Aanvragen die niet tot een opdracht leiden bewaren wij maximaal 12 maanden. Word je klant, dan gelden de
+          wettelijke bewaartermijnen voor administratie (7 jaar).
+        </p>
+      </section>
+
+      <section>
+        <h2 class="font-display text-xl font-bold">Cookies en statistieken</h2>
+        <p class="mt-2">
+          Deze website gebruikt geen tracking-cookies zonder jouw toestemming. Als wij statistieken bijhouden,
+          gebeurt dat geanonimiseerd. Functionele opslag (zoals het onthouden van een campagnecode tijdens je bezoek)
+          verlaat je browser niet.
+        </p>
+      </section>
+
+      <section>
+        <h2 class="font-display text-xl font-bold">Jouw rechten</h2>
+        <p class="mt-2">
+          Je hebt het recht om je gegevens in te zien, te laten corrigeren of te laten verwijderen. Stuur daarvoor
+          een e-mail naar <a href={`mailto:${site.funnel.fallbackEmail}`} class="underline">{site.funnel.fallbackEmail}</a>.
+          Je kunt ook een klacht indienen bij de Autoriteit Persoonsgegevens.
+        </p>
+      </section>
+    </div>
+  </article>
+</Base>

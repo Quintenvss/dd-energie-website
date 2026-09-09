@@ -1,0 +1,78 @@
+---
+/**
+ * Afsluitende call-to-action in drie stijlen:
+ *  - sky:   blauwe band
+ *  - ember: donkere band met oranje knop
+ *  - mint:  groene verloopband
+ */
+import { site } from '../sites';
+import Icon from './Icon.astro';
+const c = site.cta;
+const v = site.theme;
+---
+
+{
+  v === 'sky' && (
+    <section class="mx-auto max-w-6xl px-4 pb-20 sm:px-6">
+      <div class="reveal relative overflow-hidden rounded-card bg-primary px-6 py-12 text-center text-white sm:px-12">
+        <div class="pointer-events-none absolute -right-20 -bottom-24 size-72 rounded-full bg-white/10" aria-hidden="true" />
+        <h2 class="font-display relative text-3xl font-bold tracking-tight sm:text-4xl">{c.title}</h2>
+        <p class="relative mx-auto mt-3 max-w-xl text-lg text-white/85">{c.text}</p>
+        <div class="relative mt-8 flex flex-wrap justify-center gap-3">
+          <a href="#aanvraag" class="btn bg-white text-primary-dark hover:bg-accent">
+            {c.button} <Icon name="arrow-right" class="size-4" />
+          </a>
+          <a href={site.phone.href} class="btn border border-white/40 text-white hover:bg-white/10">
+            <Icon name="phone" class="size-4" />
+            {site.phone.display}
+          </a>
+        </div>
+      </div>
+    </section>
+  )
+}
+
+{
+  v === 'ember' && (
+    <section class="bg-dark text-white">
+      <div class="mx-auto grid max-w-6xl items-center gap-8 px-4 py-16 sm:px-6 lg:grid-cols-[1.4fr_auto]">
+        <div class="reveal">
+          <p class="text-xs font-bold tracking-[0.18em] text-accent uppercase">Klaar om te beginnen?</p>
+          <h2 class="font-display mt-2 text-3xl font-bold tracking-tight sm:text-4xl">{c.title}</h2>
+          <p class="mt-3 max-w-xl text-lg text-white/75">{c.text}</p>
+        </div>
+        <div class="reveal flex flex-wrap gap-3 lg:flex-col">
+          <a href="#aanvraag" class="btn btn-primary">
+            {c.button} <Icon name="arrow-right" class="size-4" />
+          </a>
+          <a href={site.phone.href} class="btn border border-white/30 text-white hover:bg-white/10">
+            <Icon name="phone" class="size-4" />
+            {site.phone.display}
+          </a>
+        </div>
+      </div>
+    </section>
+  )
+}
+
+{
+  v === 'mint' && (
+    <section class="mx-auto max-w-6xl px-4 pb-20 sm:px-6">
+      <div class="reveal relative overflow-hidden rounded-card bg-gradient-to-br from-primary to-primary-dark px-6 py-12 text-center text-white sm:px-12">
+        <div class="pointer-events-none absolute -top-16 -left-16 size-56 rounded-full bg-white/10" aria-hidden="true" />
+        <div class="pointer-events-none absolute -right-20 -bottom-24 size-72 rounded-full bg-accent/20" aria-hidden="true" />
+        <h2 class="font-display relative text-3xl font-bold tracking-tight sm:text-4xl">{c.title}</h2>
+        <p class="relative mx-auto mt-3 max-w-xl text-lg text-white/85">{c.text}</p>
+        <div class="relative mt-8 flex flex-wrap justify-center gap-3">
+          <a href="#aanvraag" class="btn bg-white text-primary-dark hover:bg-accent hover:text-ink">
+            {c.button} <Icon name="arrow-right" class="size-4" />
+          </a>
+          <a href={site.phone.href} class="btn border border-white/40 text-white hover:bg-white/10">
+            <Icon name="phone" class="size-4" />
+            {site.phone.display}
+          </a>
+        </div>
+      </div>
+    </section>
+  )
+}

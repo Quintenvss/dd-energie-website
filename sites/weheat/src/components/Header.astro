@@ -1,0 +1,42 @@
+---
+import { site } from '../sites';
+import Wordmark from './Wordmark.astro';
+import Icon from './Icon.astro';
+import { url } from '../lib/links';
+
+const tb = site.topbar;
+const iconClass = tb?.style === 'primary' ? 'size-3.5 text-white' : 'size-3.5 text-accent';
+---
+
+{
+  tb && (
+    <div class:list={['text-white', tb.style === 'primary' ? 'bg-primary' : 'bg-dark']}>
+      <div class="mx-auto flex max-w-6xl flex-wrap items-center justify-center gap-x-6 gap-y-1 px-4 py-1.5 text-xs font-medium sm:px-6">
+        {tb.items.map((item, i) => (
+          <span class:list={['items-center gap-1.5', i === 2 ? 'hidden sm:flex' : 'flex']}>
+            <Icon name="check" class={iconClass} />
+            {item}
+          </span>
+        ))}
+      </div>
+    </div>
+  )
+}
+
+<header class="sticky top-0 z-40 border-b border-line bg-surface/90 backdrop-blur">
+  <div class="mx-auto flex max-w-6xl items-center justify-between gap-4 px-4 py-3 sm:px-6">
+    <a href={url('/')} class="shrink-0" aria-label={`${site.name} home`}>
+      <Wordmark />
+    </a>
+    <div class="flex items-center gap-2 sm:gap-4">
+      <a
+        href={site.phone.href}
+        class="hidden items-center gap-2 text-sm font-semibold text-ink hover:text-primary sm:flex"
+      >
+        <Icon name="phone" class="size-4" />
+        {site.phone.display}
+      </a>
+      <a href="#aanvraag" class="btn btn-primary btn-sm">{site.funnel.submitLabel}</a>
+    </div>
+  </div>
+</header>

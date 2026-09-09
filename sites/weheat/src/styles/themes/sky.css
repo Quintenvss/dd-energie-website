@@ -1,0 +1,22 @@
+/* warmtepomp-weheat.nl: informatief, betrouwbaar, check-stijl. Blauw + geel. */
+@import '@fontsource-variable/space-grotesk';
+@import '@fontsource-variable/manrope';
+
+:root {
+  --t-bg: #f3f6fc;
+  --t-surface: #ffffff;
+  --t-ink: #111a2e;
+  --t-muted: #5a6478;
+  --t-primary: #2457e6;
+  --t-primary-dark: #1a44bd;
+  --t-dark: #0e1a3d;
+  --t-accent: #ffcc4d;
+  --t-soft: #dbe4fb;
+  --t-line: #d5dcec;
+
+  --t-font-display: 'Space Grotesk Variable', ui-sans-serif, system-ui, sans-serif;
+  --t-font-body: 'Manrope Variable', ui-sans-serif, system-ui, sans-serif;
+
+  --t-radius-card: 1rem;
+  --t-radius-field: 0.6rem;
+}

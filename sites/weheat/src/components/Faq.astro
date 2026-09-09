@@ -1,0 +1,81 @@
+---
+/**
+ * FAQ in drie stijlen:
+ *  - sky:   gecentreerd, één kolom
+ *  - ember: kop links met telefoonnummer, vragen rechts
+ *  - mint:  gecentreerde kop, twee kolommen
+ */
+import { site } from '../sites';
+import SectionHead from './SectionHead.astro';
+import Icon from './Icon.astro';
+const v = site.theme;
+---
+
+{
+  v === 'sky' && (
+    <section class="mx-auto max-w-3xl px-4 py-16 sm:px-6">
+      <SectionHead title="Veelgestelde vragen" align="center" />
+      <div class="mt-8 space-y-3">
+        {site.faq.map((item) => (
+          <details class="reveal group rounded-card border border-line bg-surface px-6 py-4">
+            <summary class="flex cursor-pointer items-center justify-between gap-4 text-left font-display font-bold">
+              {item.q}
+              <Icon name="plus" class="size-5 shrink-0 text-primary transition-transform group-open:rotate-45" />
+            </summary>
+            <p class="mt-3 text-sm leading-relaxed text-muted">{item.a}</p>
+          </details>
+        ))}
+      </div>
+    </section>
+  )
+}
+
+{
+  v === 'ember' && (
+    <section class="mx-auto max-w-6xl px-4 py-16 sm:px-6">
+      <div class="grid gap-10 lg:grid-cols-[1fr_1.6fr]">
+        <div class="lg:sticky lg:top-28 lg:self-start">
+          <SectionHead
+            overline="FAQ"
+            title="Veelgestelde vragen"
+            intro="Staat je vraag er niet bij? Bel gerust, je krijgt direct een adviseur aan de lijn."
+          />
+          <a href={site.phone.href} class="btn btn-ghost mt-6">
+            <Icon name="phone" class="size-4" />
+            {site.phone.display}
+          </a>
+        </div>
+        <div class="divide-y divide-line rounded-card border border-line bg-surface">
+          {site.faq.map((item) => (
+            <details class="reveal group px-6 py-4">
+              <summary class="flex cursor-pointer items-center justify-between gap-4 text-left font-display font-bold">
+                {item.q}
+                <Icon name="chevron-down" class="size-5 shrink-0 text-primary transition-transform group-open:rotate-180" />
+              </summary>
+              <p class="mt-3 text-sm leading-relaxed text-muted">{item.a}</p>
+            </details>
+          ))}
+        </div>
+      </div>
+    </section>
+  )
+}
+
+{
+  v === 'mint' && (
+    <section class="mx-auto max-w-6xl px-4 py-16 sm:px-6">
+      <SectionHead title="Veelgestelde vragen" align="center" />
+      <div class="mt-8 grid gap-3 md:grid-cols-2">
+        {site.faq.map((item) => (
+          <details class="reveal group self-start rounded-card border border-line bg-surface px-6 py-4">
+            <summary class="flex cursor-pointer items-center justify-between gap-4 text-left font-display font-bold">
+              {item.q}
+              <Icon name="plus" class="size-5 shrink-0 text-primary transition-transform group-open:rotate-45" />
+            </summary>
+            <p class="mt-3 text-sm leading-relaxed text-muted">{item.a}</p>
+          </details>
+        ))}
+      </div>
+    </section>
+  )
+}

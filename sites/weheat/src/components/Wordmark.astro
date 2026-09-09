@@ -1,0 +1,12 @@
+---
+import { site } from '../sites';
+interface Props {
+  class?: string;
+}
+const { class: cls = 'text-xl' } = Astro.props;
+const [prefix, accent, suffix] = site.wordmark;
+---
+
+<span class:list={['font-display font-bold tracking-tight', cls]}>
+  {prefix}<span class="text-primary">{accent}</span><span class="opacity-60">{suffix}</span>
+</span>

@@ -1,0 +1,22 @@
+/* weheatofferte.nl: licht en warm. Oranje voor actie, zachte gloed in de hero. */
+@import '@fontsource-variable/outfit';
+@import '@fontsource-variable/inter';
+
+:root {
+  --t-bg: #fffaf5;
+  --t-surface: #ffffff;
+  --t-ink: #1f1a17;
+  --t-muted: #6d635c;
+  --t-primary: #ee5a24;
+  --t-primary-dark: #cf4715;
+  --t-dark: #2a211c;
+  --t-accent: #ffd166;
+  --t-soft: #ffe9dc;
+  --t-line: #f0dccd;
+
+  --t-font-display: 'Outfit Variable', ui-sans-serif, system-ui, sans-serif;
+  --t-font-body: 'Inter Variable', ui-sans-serif, system-ui, sans-serif;
+
+  --t-radius-card: 1.25rem;
+  --t-radius-field: 0.8rem;
+}

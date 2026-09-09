@@ -1,0 +1,37 @@
+---
+import Base from '../layouts/Base.astro';
+import Hero from '../components/Hero.astro';
+import Usps from '../components/Usps.astro';
+import Compare from '../components/Compare.astro';
+import Prices from '../components/Prices.astro';
+import Suitability from '../components/Suitability.astro';
+import Steps from '../components/Steps.astro';
+import Models from '../components/Models.astro';
+import About from '../components/About.astro';
+import Faq from '../components/Faq.astro';
+import Cta from '../components/Cta.astro';
+import { site } from '../sites';
+import { faqSchema } from '../lib/schema';
+
+const sections = {
+  usps: Usps,
+  compare: Compare,
+  prices: Prices,
+  suitability: Suitability,
+  steps: Steps,
+  models: Models,
+  about: About,
+  faq: Faq,
+  cta: Cta,
+};
+---
+
+<Base schema={[faqSchema(site.faq, `https://${site.domain}/`)]}>
+  <Hero />
+  {
+    site.sections.map((key) => {
+      const Section = sections[key];
+      return <Section />;
+    })
+  }
+</Base>

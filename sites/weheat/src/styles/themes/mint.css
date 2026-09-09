@@ -1,0 +1,22 @@
+/* weheatkopen.nl: fris, licht, productgericht. Smaragdgroen met amber accent. */
+@import '@fontsource-variable/plus-jakarta-sans';
+@import '@fontsource-variable/dm-sans';
+
+:root {
+  --t-bg: #f6fbf8;
+  --t-surface: #ffffff;
+  --t-ink: #10231c;
+  --t-muted: #5b6d66;
+  --t-primary: #0f9d6e;
+  --t-primary-dark: #0b7a55;
+  --t-dark: #0f2e24;
+  --t-accent: #ffb347;
+  --t-soft: #dff5ea;
+  --t-line: #d6e6de;
+
+  --t-font-display: 'Plus Jakarta Sans Variable', ui-sans-serif, system-ui, sans-serif;
+  --t-font-body: 'DM Sans Variable', ui-sans-serif, system-ui, sans-serif;
+
+  --t-radius-card: 1.25rem;
+  --t-radius-field: 0.75rem;
+}

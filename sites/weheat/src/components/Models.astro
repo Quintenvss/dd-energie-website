@@ -1,0 +1,139 @@
+---
+/**
+ * Modellen in drie stijlen:
+ *  - sky:   kaarten met foto links
+ *  - ember: overzichtsrijen in één kader (zakelijk)
+ *  - mint:  productkaarten zoals in een webshop
+ */
+import { Image } from 'astro:assets';
+import { site } from '../sites';
+import SectionHead from './SectionHead.astro';
+import Icon from './Icon.astro';
+const m = site.models;
+const v = site.theme;
+---
+
+{
+  v === 'sky' && (
+    <section id="modellen" class="scroll-mt-20 bg-surface">
+      <div class="mx-auto max-w-6xl px-4 py-16 sm:px-6">
+        <SectionHead title={m.title} intro={m.intro} />
+        <div class="mt-10 grid gap-6 md:grid-cols-2">
+          {m.items.map((p) => (
+            <article class="reveal relative grid gap-6 rounded-card border border-line bg-bg p-6 sm:grid-cols-[180px_1fr] sm:p-8">
+              {p.badge && (
+                <span class="absolute top-4 right-4 rounded-full bg-accent px-3 py-1 text-xs font-bold text-ink">
+                  {p.badge}
+                </span>
+              )}
+              <div class="grid place-items-center rounded-card bg-soft p-4">
+                <Image src={p.image} alt={p.name} width={320} class="w-full max-w-[160px]" />
+              </div>
+              <div>
+                <p class="text-xs font-semibold tracking-wide text-muted uppercase">{p.subtitle}</p>
+                <h3 class="font-display mt-1 text-2xl font-bold">{p.name}</h3>
+                <p class="font-display mt-3 text-2xl font-bold text-primary">{p.price}</p>
+                <p class="text-xs text-muted">{p.priceNote}</p>
+                <ul class="mt-4 space-y-1.5">
+                  {p.points.map((pt) => (
+                    <li class="flex items-start gap-2 text-sm">
+                      <Icon name="check" class="mt-0.5 size-4 shrink-0 text-primary" />
+                      {pt}
+                    </li>
+                  ))}
+                </ul>
+                <a href="#aanvraag" class="btn btn-dark btn-sm mt-5">
+                  {site.funnel.submitLabel} <Icon name="arrow-right" class="size-4" />
+                </a>
+              </div>
+            </article>
+          ))}
+        </div>
+      </div>
+    </section>
+  )
+}
+
+{
+  v === 'ember' && (
+    <section id="modellen" class="scroll-mt-20 bg-surface">
+      <div class="mx-auto max-w-6xl px-4 py-16 sm:px-6">
+        <SectionHead overline="Modellen" title={m.title} intro={m.intro} />
+        <div class="reveal mt-10 divide-y divide-line rounded-card border border-line bg-bg">
+          {m.items.map((p) => (
+            <article class="grid items-center gap-6 p-6 sm:grid-cols-[140px_1fr_auto] sm:p-8">
+              <div class="grid place-items-center rounded-card bg-surface p-3">
+                <Image src={p.image} alt={p.name} width={320} class="w-full max-w-[120px]" />
+              </div>
+              <div>
+                <div class="flex flex-wrap items-center gap-2">
+                  <h3 class="font-display text-2xl font-bold">{p.name}</h3>
+                  {p.badge && (
+                    <span class="rounded-full bg-primary px-2.5 py-0.5 text-xs font-bold text-white">{p.badge}</span>
+                  )}
+                </div>
+                <p class="text-sm text-muted">{p.subtitle}</p>
+                <ul class="mt-3 grid gap-1.5 sm:grid-cols-2">
+                  {p.points.map((pt) => (
+                    <li class="flex items-start gap-2 text-sm">
+                      <Icon name="check" class="mt-0.5 size-4 shrink-0 text-primary" />
+                      {pt}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+              <div class="sm:min-w-44 sm:text-right">
+                <p class="font-display text-2xl font-bold text-primary">{p.price}</p>
+                <p class="text-xs text-muted">{p.priceNote}</p>
+                <a href="#aanvraag" class="btn btn-dark btn-sm mt-4">
+                  {site.funnel.submitLabel}
+                </a>
+              </div>
+            </article>
+          ))}
+        </div>
+      </div>
+    </section>
+  )
+}
+
+{
+  v === 'mint' && (
+    <section id="modellen" class="scroll-mt-20">
+      <div class="mx-auto max-w-6xl px-4 py-16 sm:px-6">
+        <SectionHead title={m.title} intro={m.intro} align="center" />
+        <div class="mx-auto mt-10 grid max-w-4xl gap-6 md:grid-cols-2">
+          {m.items.map((p) => (
+            <article class="reveal relative flex flex-col overflow-hidden rounded-card border border-line bg-surface shadow-lg shadow-dark/5">
+              {p.badge && (
+                <span class="absolute top-4 left-4 z-10 rounded-full bg-accent px-3 py-1 text-xs font-bold text-ink">
+                  {p.badge}
+                </span>
+              )}
+              <div class="grid place-items-center bg-gradient-to-br from-soft to-bg p-8">
+                <Image src={p.image} alt={p.name} width={360} class="w-1/2" />
+              </div>
+              <div class="flex flex-1 flex-col p-6">
+                <p class="text-xs font-semibold tracking-wide text-muted uppercase">{p.subtitle}</p>
+                <h3 class="font-display mt-1 text-2xl font-bold">{p.name}</h3>
+                <p class="font-display mt-3 text-3xl font-bold text-primary">{p.price}</p>
+                <p class="text-xs text-muted">{p.priceNote}</p>
+                <ul class="mt-4 space-y-1.5">
+                  {p.points.map((pt) => (
+                    <li class="flex items-start gap-2 text-sm">
+                      <Icon name="check" class="mt-0.5 size-4 shrink-0 text-primary" />
+                      {pt}
+                    </li>
+                  ))}
+                </ul>
+                <a href="#aanvraag" class="btn btn-primary mt-6 w-full">
+                  {site.funnel.submitLabel} <Icon name="arrow-right" class="size-4" />
+                </a>
+              </div>
+            </article>
+          ))}
+        </div>
+      </div>
+    </section>
+  )
+}

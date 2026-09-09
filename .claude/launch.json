@@ -4,8 +4,47 @@
     {
       "name": "dd-energie-dev",
       "runtimeExecutable": "npm",
-      "runtimeArgs": ["run", "dev"],
+      "runtimeArgs": [
+        "run",
+        "dev"
+      ],
       "port": 4321
+    },
+    {
+      "name": "weheatofferte",
+      "runtimeExecutable": "npm",
+      "runtimeArgs": [
+        "run",
+        "dev:offerte",
+        "--prefix",
+        "sites/weheat"
+      ],
+      "port": 4331,
+      "autoPort": true
+    },
+    {
+      "name": "weheatkopen",
+      "runtimeExecutable": "npm",
+      "runtimeArgs": [
+        "run",
+        "dev:kopen",
+        "--prefix",
+        "sites/weheat"
+      ],
+      "port": 4332,
+      "autoPort": true
+    },
+    {
+      "name": "warmtepomp-weheat",
+      "runtimeExecutable": "npm",
+      "runtimeArgs": [
+        "run",
+        "dev:warmtepomp",
+        "--prefix",
+        "sites/weheat"
+      ],
+      "port": 4333,
+      "autoPort": true
     }
   ]
 }

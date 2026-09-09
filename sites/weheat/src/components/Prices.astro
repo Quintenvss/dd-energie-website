@@ -1,0 +1,66 @@
+---
+import { site } from '../sites';
+import SectionHead from './SectionHead.astro';
+import Icon from './Icon.astro';
+const p = site.prices;
+---
+
+{
+  p && (
+    <section class="bg-surface">
+      <div class="mx-auto grid max-w-6xl gap-12 px-4 py-16 sm:px-6 lg:grid-cols-2 lg:items-start">
+        <div>
+          <SectionHead title={p.title} intro={p.intro} />
+          <ul class="reveal mt-8 space-y-3">
+            {p.included.map((item) => (
+              <li class="flex items-start gap-3">
+                <span class="mt-0.5 grid size-5 shrink-0 place-items-center rounded-full bg-primary text-white">
+                  <Icon name="check" class="size-3" />
+                </span>
+                <span class="text-sm leading-relaxed sm:text-base">{item}</span>
+              </li>
+            ))}
+          </ul>
+        </div>
+        <div class="reveal rounded-card border border-line bg-bg p-6 sm:p-8">
+          <p class="text-xs font-semibold tracking-wide text-muted uppercase">Rekenvoorbeeld</p>
+          <h3 class="font-display mt-2 text-2xl font-bold">Wat betaal je netto?</h3>
+          <dl class="mt-6 divide-y divide-line">
+            <div class="grid grid-cols-[1fr_auto] gap-4 py-3">
+              <dt class="text-sm">
+                <span class="font-semibold">Weheat Flint hybride</span>
+                <span class="block text-muted">incl. installatie, na ISDE-subsidie</span>
+              </dt>
+              <dd class="font-display text-lg font-bold text-primary">€ 3.894</dd>
+            </div>
+            <div class="grid grid-cols-[1fr_auto] gap-4 py-3">
+              <dt class="text-sm">
+                <span class="font-semibold">Weheat all-electric</span>
+                <span class="block text-muted">incl. installatie, vóór subsidie</span>
+              </dt>
+              <dd class="font-display text-lg font-bold">€ 11.500</dd>
+            </div>
+            <div class="grid grid-cols-[1fr_auto] gap-4 py-3">
+              <dt class="text-sm">
+                <span class="font-semibold">ISDE-subsidie all-electric</span>
+                <span class="block text-muted">indicatie 2026, uitbetaald door RVO</span>
+              </dt>
+              <dd class="font-display text-lg font-bold text-primary">− € 2.500 tot 3.500</dd>
+            </div>
+            <div class="grid grid-cols-[1fr_auto] gap-4 py-3">
+              <dt class="text-sm font-semibold">All-electric netto</dt>
+              <dd class="font-display text-lg font-bold">≈ € 8.000 tot 9.000</dd>
+            </div>
+          </dl>
+          <p class="mt-4 text-xs leading-relaxed text-muted">
+            Vanaf-prijzen. De definitieve prijs hangt af van je woning, de plek van de buitenunit en het
+            gekozen vermogen. Je krijgt altijd eerst een vaste prijsopgave.
+          </p>
+          <a href="#aanvraag" class="btn btn-primary mt-6 w-full">
+            {site.funnel.submitLabel} <Icon name="arrow-right" class="size-4" />
+          </a>
+        </div>
+      </div>
+    </section>
+  )
+}

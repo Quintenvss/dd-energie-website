@@ -1,0 +1,39 @@
+{
+  "name": "weheat-conversiesites",
+  "type": "module",
+  "version": "0.1.0",
+  "private": true,
+  "engines": {
+    "node": ">=22.12.0"
+  },
+  "scripts": {
+    "dev": "cross-env SITE=weheatofferte astro dev --ignore-lock",
+    "dev:offerte": "cross-env SITE=weheatofferte astro dev --ignore-lock",
+    "dev:kopen": "cross-env SITE=weheatkopen astro dev --ignore-lock",
+    "dev:warmtepomp": "cross-env SITE=warmtepomp-weheat astro dev --ignore-lock",
+    "build": "node scripts/build-all.mjs",
+    "build:offerte": "cross-env SITE=weheatofferte astro build",
+    "build:kopen": "cross-env SITE=weheatkopen astro build",
+    "build:warmtepomp": "cross-env SITE=warmtepomp-weheat astro build",
+    "preview:offerte": "cross-env SITE=weheatofferte astro preview",
+    "preview:kopen": "cross-env SITE=weheatkopen astro preview",
+    "preview:warmtepomp": "cross-env SITE=warmtepomp-weheat astro preview",
+    "check": "cross-env SITE=weheatofferte astro check"
+  },
+  "dependencies": {
+    "@astrojs/sitemap": "^3.7.4",
+    "@fontsource-variable/dm-sans": "^5.3.0",
+    "@fontsource-variable/inter": "^5.3.0",
+    "@fontsource-variable/manrope": "^5.3.0",
+    "@fontsource-variable/outfit": "^5.3.0",
+    "@fontsource-variable/plus-jakarta-sans": "^5.3.0",
+    "@fontsource-variable/sora": "^5.3.0",
+    "@fontsource-variable/space-grotesk": "^5.3.0",
+    "@tailwindcss/vite": "^4.3.3",
+    "astro": "^7.3.1",
+    "tailwindcss": "^4.3.3"
+  },
+  "devDependencies": {
+    "cross-env": "^7.0.3"
+  }
+}

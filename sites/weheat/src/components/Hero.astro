@@ -1,0 +1,240 @@
+---
+/**
+ * Hero in drie varianten (site.hero.variant):
+ *  - split-form: tekst links, funnel rechts, zachte oranje gloed (weheatofferte.nl)
+ *  - product:    tekst + productkaart, funnel in een lichte band eronder (weheatkopen.nl)
+ *  - check:      gecentreerde tekst, funnel als "check" eronder (warmtepomp-weheat.nl)
+ */
+import { Image } from 'astro:assets';
+import { site } from '../sites';
+import Funnel from './Funnel.astro';
+import Icon from './Icon.astro';
+import imgFlint from '../assets/weheat-flint-los.webp';
+
+const h = site.hero;
+// Titel: het deel tussen [[ ]] wordt gekleurd
+const parts = h.title.split(/\[\[|\]\]/);
+---
+
+{
+  h.variant === 'split-form' && (
+    <section class="relative overflow-hidden">
+      <div
+        class="pointer-events-none absolute -top-32 -right-24 h-[30rem] w-[30rem] rounded-full bg-primary/15 blur-3xl"
+        aria-hidden="true"
+      />
+      <div
+        class="pointer-events-none absolute top-48 -left-40 h-[24rem] w-[24rem] rounded-full bg-accent/35 blur-3xl"
+        aria-hidden="true"
+      />
+      <div class="relative mx-auto grid max-w-6xl items-center gap-12 px-4 py-14 sm:px-6 lg:grid-cols-[1.05fr_0.95fr] lg:py-20">
+        <div>
+          <p class="inline-flex items-center gap-2 rounded-full bg-soft px-3 py-1 text-xs font-semibold tracking-wide text-primary-dark">
+            <span class="size-1.5 rounded-full bg-primary" />
+            {h.eyebrow}
+          </p>
+          <h1 class="font-display mt-5 text-4xl font-bold leading-[1.05] tracking-tight sm:text-5xl lg:text-[3.4rem]">
+            {parts.map((p, i) => (i % 2 ? <span class="text-primary">{p}</span> : p))}
+          </h1>
+          <p class="mt-6 max-w-xl text-lg leading-relaxed text-muted">{h.lead}</p>
+          <ul class="mt-7 space-y-2.5">
+            {h.bullets.map((b) => (
+              <li class="flex items-start gap-3">
+                <span class="mt-0.5 grid size-5 shrink-0 place-items-center rounded-full bg-primary">
+                  <Icon name="check" class="size-3 text-white" />
+                </span>
+                {b}
+              </li>
+            ))}
+          </ul>
+          {h.proof && (
+            <p class="mt-6 flex items-center gap-2 text-sm text-muted">
+              <span class="flex text-accent" aria-hidden="true">
+                <Icon name="star" class="size-4 fill-current" />
+                <Icon name="star" class="size-4 fill-current" />
+                <Icon name="star" class="size-4 fill-current" />
+                <Icon name="star" class="size-4 fill-current" />
+                <Icon name="star" class="size-4 fill-current" />
+              </span>
+              {h.proof}
+            </p>
+          )}
+          <p class="mt-6 text-sm text-muted">
+            Liever bellen?{' '}
+            <a href={site.phone.href} class="font-semibold text-ink underline decoration-primary underline-offset-4">
+              {site.phone.display}
+            </a>
+          </p>
+        </div>
+        <div class="relative">
+          <div
+            class="pointer-events-none absolute -inset-3 rounded-[2rem] bg-gradient-to-br from-primary/20 via-accent/20 to-transparent blur-xl"
+            aria-hidden="true"
+          />
+          <Funnel class="relative border-t-4 border-primary" />
+        </div>
+      </div>
+    </section>
+  )
+}
+
+{
+  h.variant === 'product' && (
+    <>
+      <section class="relative overflow-hidden">
+        <div
+          class="pointer-events-none absolute inset-0 [background-image:radial-gradient(circle,rgba(15,157,110,0.14)_1.5px,transparent_1.5px)] [background-size:22px_22px]"
+          aria-hidden="true"
+        />
+        <div
+          class="pointer-events-none absolute inset-x-0 bottom-0 h-40 bg-gradient-to-t from-bg to-transparent"
+          aria-hidden="true"
+        />
+        <div class="relative mx-auto grid max-w-6xl items-center gap-12 px-4 pt-12 pb-14 sm:px-6 lg:grid-cols-[1.05fr_0.95fr] lg:pt-20 lg:pb-20">
+          <div>
+            <p class="inline-flex items-center gap-2 rounded-full bg-soft px-3 py-1 text-xs font-semibold tracking-wide text-primary-dark">
+              <Icon name="check" class="size-3.5" />
+              {h.eyebrow}
+            </p>
+            <h1 class="font-display mt-5 text-4xl font-bold leading-[1.05] tracking-tight sm:text-5xl lg:text-[3.4rem]">
+              {parts.map((p, i) => (i % 2 ? <span class="text-primary">{p}</span> : p))}
+            </h1>
+            <p class="mt-6 max-w-xl text-lg leading-relaxed text-muted">{h.lead}</p>
+            <div class="mt-8 flex flex-wrap gap-3">
+              <a href="#aanvraag" class="btn btn-primary">
+                {site.funnel.submitLabel} <Icon name="arrow-right" class="size-4" />
+              </a>
+              <a href="#modellen" class="btn btn-ghost">Bekijk modellen</a>
+            </div>
+            <ul class="mt-8 grid gap-2 sm:grid-cols-3">
+              {h.bullets.map((b) => (
+                <li class="flex items-start gap-2 text-sm font-medium">
+                  <Icon name="check" class="mt-0.5 size-4 shrink-0 text-primary" />
+                  {b}
+                </li>
+              ))}
+            </ul>
+            {h.proof && (
+              <p class="mt-6 flex items-center gap-2 text-sm text-muted">
+                <span class="flex text-accent" aria-hidden="true">
+                  <Icon name="star" class="size-4 fill-current" />
+                  <Icon name="star" class="size-4 fill-current" />
+                  <Icon name="star" class="size-4 fill-current" />
+                  <Icon name="star" class="size-4 fill-current" />
+                  <Icon name="star" class="size-4 fill-current" />
+                </span>
+                {h.proof}
+              </p>
+            )}
+          </div>
+
+          <div class="relative mx-auto w-full max-w-md">
+            <article class="relative rounded-card border border-line bg-surface p-5 shadow-2xl shadow-dark/10">
+              <span class="absolute -top-3.5 left-5 rounded-full bg-accent px-3 py-1 text-xs font-bold text-ink shadow">
+                Bestseller
+              </span>
+              <div class="grid place-items-center rounded-card bg-gradient-to-br from-soft to-bg p-8">
+                <Image
+                  src={imgFlint}
+                  alt="Weheat Flint hybride warmtepomp"
+                  width={520}
+                  class="w-3/4 drop-shadow-xl"
+                  loading="eager"
+                />
+              </div>
+              <div class="mt-5 flex items-end justify-between gap-4">
+                <div>
+                  <p class="text-xs font-semibold tracking-wide text-muted uppercase">Weheat Flint · hybride</p>
+                  <p class="font-display mt-1 text-2xl font-bold text-primary">vanaf € 3.894</p>
+                  <p class="text-xs text-muted">incl. installatie, na ISDE-subsidie</p>
+                </div>
+                <a href="#aanvraag" class="btn btn-dark btn-sm shrink-0">Prijs</a>
+              </div>
+              <ul class="mt-4 flex flex-wrap gap-2">
+                {['38 dB, fluisterstil', '6 kW', 'Werkt met je cv-ketel', 'In 1 dag geplaatst'].map((chip) => (
+                  <li class="rounded-full border border-line bg-bg px-2.5 py-1 text-xs font-semibold text-ink/80">{chip}</li>
+                ))}
+              </ul>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="border-y border-line bg-soft/50 py-12 lg:py-16">
+        <div class="mx-auto grid max-w-6xl items-center gap-10 px-4 sm:px-6 lg:grid-cols-[0.9fr_1.1fr]">
+          <div>
+            <h2 class="font-display text-3xl font-bold tracking-tight sm:text-4xl">{site.funnel.title}</h2>
+            <p class="mt-4 text-lg text-muted">{site.funnel.intro}</p>
+            <ul class="mt-6 space-y-3">
+              <li class="flex gap-3">
+                <span class="grid size-8 shrink-0 place-items-center rounded-full bg-surface text-primary shadow-sm">
+                  <Icon name="clock" class="size-4" />
+                </span>
+                <span class="pt-1 text-sm font-medium">Binnen 1 werkdag een vaste prijs</span>
+              </li>
+              <li class="flex gap-3">
+                <span class="grid size-8 shrink-0 place-items-center rounded-full bg-surface text-primary shadow-sm">
+                  <Icon name="euro" class="size-4" />
+                </span>
+                <span class="pt-1 text-sm font-medium">Inclusief installatie en subsidiebedrag</span>
+              </li>
+              <li class="flex gap-3">
+                <span class="grid size-8 shrink-0 place-items-center rounded-full bg-surface text-primary shadow-sm">
+                  <Icon name="shield" class="size-4" />
+                </span>
+                <span class="pt-1 text-sm font-medium">Geplaatst door een erkende installateur</span>
+              </li>
+            </ul>
+          </div>
+          <Funnel />
+        </div>
+      </section>
+    </>
+  )
+}
+
+{
+  h.variant === 'check' && (
+    <section class="relative overflow-hidden">
+      <div
+        class="pointer-events-none absolute inset-0 [background-image:linear-gradient(to_right,rgba(36,87,230,0.06)_1px,transparent_1px),linear-gradient(to_bottom,rgba(36,87,230,0.06)_1px,transparent_1px)] [background-size:40px_40px]"
+        aria-hidden="true"
+      />
+      <div class="relative mx-auto max-w-6xl px-4 pt-12 pb-16 sm:px-6 lg:pt-16">
+        <div class="mx-auto max-w-3xl text-center">
+          <p class="inline-flex items-center gap-2 rounded-full bg-dark px-3 py-1 text-xs font-semibold tracking-wide text-white">
+            <Icon name="search" class="size-3.5 text-accent" />
+            {h.eyebrow}
+          </p>
+          <h1 class="font-display mt-5 text-4xl font-bold leading-[1.05] tracking-tight sm:text-5xl lg:text-[3.4rem]">
+            {parts.map((p, i) => (i % 2 ? <span class="text-primary">{p}</span> : p))}
+          </h1>
+          <p class="mx-auto mt-6 max-w-2xl text-lg leading-relaxed text-muted">{h.lead}</p>
+        </div>
+        <div class="mx-auto mt-10 max-w-2xl">
+          <Funnel />
+        </div>
+        <ul class="mx-auto mt-6 flex max-w-3xl flex-wrap justify-center gap-x-6 gap-y-2 text-sm font-medium text-muted">
+          {h.bullets.map((b) => (
+            <li class="flex items-center gap-2">
+              <Icon name="check" class="size-4 text-primary" />
+              {b}
+            </li>
+          ))}
+        </ul>
+        {h.proof && (
+          <p class="mt-5 flex items-center justify-center gap-2 text-sm text-muted">
+            <span class="flex text-accent" aria-hidden="true">
+              <Icon name="star" class="size-4 fill-current" />
+              <Icon name="star" class="size-4 fill-current" />
+              <Icon name="star" class="size-4 fill-current" />
+              <Icon name="star" class="size-4 fill-current" />
+              <Icon name="star" class="size-4 fill-current" />
+            </span>
+            {h.proof}
+          </p>
+        )}
+      </div>
+    </section>
+  )
+}

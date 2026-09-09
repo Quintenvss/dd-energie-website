@@ -1,0 +1,40 @@
+---
+import { site } from '../sites';
+import SectionHead from './SectionHead.astro';
+import Icon from './Icon.astro';
+const c = site.compare;
+---
+
+{
+  c && (
+    <section class="mx-auto max-w-6xl px-4 py-16 sm:px-6">
+      <SectionHead overline="Vergelijk" title={c.title} intro={c.intro} />
+      <div class="reveal mt-10 overflow-hidden rounded-card border border-line bg-surface">
+        <div class="hidden grid-cols-[160px_1fr_1fr] border-b border-line text-sm font-semibold md:grid">
+          <div class="p-4" />
+          <div class="p-4 text-muted">Zelf regelen</div>
+          <div class="bg-soft p-4 text-primary-dark">Via {site.domain}</div>
+        </div>
+        {c.rows.map((r) => (
+          <div class="grid border-b border-line last:border-b-0 md:grid-cols-[160px_1fr_1fr]">
+            <div class="px-4 pt-4 font-display font-bold md:py-4">{r.label}</div>
+            <div class="flex items-start gap-3 px-4 py-3 text-sm text-muted md:py-4">
+              <Icon name="x" class="mt-0.5 size-4 shrink-0 text-red-400" />
+              <span>
+                <span class="mr-1 font-semibold md:hidden">Zelf:</span>
+                {r.self}
+              </span>
+            </div>
+            <div class="flex items-start gap-3 bg-soft/60 px-4 py-3 text-sm font-medium md:py-4">
+              <Icon name="check" class="mt-0.5 size-4 shrink-0 text-primary" />
+              <span>
+                <span class="mr-1 font-semibold md:hidden">Via ons:</span>
+                {r.viaUs}
+              </span>
+            </div>
+          </div>
+        ))}
+      </div>
+    </section>
+  )
+}

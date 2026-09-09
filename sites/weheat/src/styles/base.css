@@ -1,0 +1,247 @@
+@import 'tailwindcss';
+
+/*
+ * Semantische tokens. De echte waarden (kleuren + lettertypen) staan per site
+ * in src/styles/themes/<thema>.css en worden via de '@theme'-alias geladen.
+ * Componenten gebruiken alleen deze namen: bg-bg, text-ink, bg-primary, enz.
+ */
+@theme inline {
+  --color-bg: var(--t-bg);
+  --color-surface: var(--t-surface);
+  --color-ink: var(--t-ink);
+  --color-muted: var(--t-muted);
+  --color-primary: var(--t-primary);
+  --color-primary-dark: var(--t-primary-dark);
+  --color-dark: var(--t-dark);
+  --color-accent: var(--t-accent);
+  --color-soft: var(--t-soft);
+  --color-line: var(--t-line);
+
+  --font-display: var(--t-font-display);
+  --font-body: var(--t-font-body);
+
+  --radius-card: var(--t-radius-card);
+  --radius-field: var(--t-radius-field);
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+body {
+  font-family: var(--font-body);
+  background: var(--color-bg);
+  color: var(--color-ink);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+:focus-visible {
+  outline: 3px solid var(--color-accent);
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+/* Knoppen */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  border-radius: var(--radius-field);
+  padding: 0.95rem 1.6rem;
+  font-family: var(--font-display);
+  font-size: 0.95rem;
+  font-weight: 700;
+  line-height: 1;
+  text-align: center;
+  cursor: pointer;
+  transition:
+    background-color 0.2s,
+    color 0.2s,
+    box-shadow 0.2s,
+    transform 0.15s;
+}
+.btn:active {
+  transform: translateY(1px);
+}
+.btn-sm {
+  padding: 0.65rem 1.1rem;
+  font-size: 0.85rem;
+}
+.btn:disabled {
+  opacity: 0.6;
+  cursor: wait;
+}
+.btn-primary {
+  background: var(--color-primary);
+  color: #fff;
+  box-shadow: 0 10px 24px -12px color-mix(in oklab, var(--color-primary) 80%, transparent);
+}
+.btn-primary:hover {
+  background: var(--color-primary-dark);
+}
+.btn-dark {
+  background: var(--color-dark);
+  color: #fff;
+}
+.btn-dark:hover {
+  background: color-mix(in oklab, var(--color-dark) 85%, var(--color-primary));
+}
+.btn-ghost {
+  background: transparent;
+  color: var(--color-ink);
+  box-shadow: inset 0 0 0 1.5px var(--color-line);
+}
+.btn-ghost:hover {
+  background: var(--color-surface);
+}
+
+/* Velden */
+.field {
+  width: 100%;
+  border-radius: var(--radius-field);
+  border: 1.5px solid var(--color-line);
+  background: #fff;
+  padding: 0.85rem 1rem;
+  font-size: 1rem;
+  color: var(--color-ink);
+  transition:
+    border-color 0.15s,
+    box-shadow 0.15s;
+}
+.field::placeholder {
+  color: color-mix(in oklab, var(--color-ink) 40%, transparent);
+}
+.field:focus {
+  outline: none;
+  border-color: var(--color-primary);
+  box-shadow: 0 0 0 4px color-mix(in oklab, var(--color-primary) 15%, transparent);
+}
+.field:user-invalid {
+  border-color: #d43d3d;
+}
+
+/* Keuzekaarten in de funnel */
+.choice {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 0.85rem;
+  border-radius: var(--radius-field);
+  border: 1.5px solid var(--color-line);
+  background: #fff;
+  padding: 0.9rem 1rem;
+  cursor: pointer;
+  transition:
+    border-color 0.15s,
+    background-color 0.15s;
+}
+.choice:hover {
+  border-color: color-mix(in oklab, var(--color-primary) 60%, var(--color-line));
+}
+.choice input {
+  position: absolute;
+  opacity: 0;
+  inset: 0;
+  cursor: pointer;
+  margin: 0;
+}
+.choice input:focus-visible ~ .choice-mark {
+  outline: 3px solid var(--color-accent);
+  outline-offset: 2px;
+}
+.choice-mark {
+  display: grid;
+  place-items: center;
+  flex: none;
+  width: 1.35rem;
+  height: 1.35rem;
+  border-radius: 9999px;
+  border: 2px solid var(--color-line);
+  background: #fff;
+  transition:
+    border-color 0.15s,
+    background-color 0.15s;
+}
+.choice-mark::after {
+  content: '';
+  width: 0.5rem;
+  height: 0.5rem;
+  border-radius: 9999px;
+  background: #fff;
+  transform: scale(0);
+  transition: transform 0.15s;
+}
+.choice:has(input:checked) {
+  border-color: var(--color-primary);
+  background: color-mix(in oklab, var(--color-primary) 7%, #fff);
+}
+.choice:has(input:checked) .choice-mark {
+  border-color: var(--color-primary);
+  background: var(--color-primary);
+}
+.choice:has(input:checked) .choice-mark::after {
+  transform: scale(1);
+}
+
+/* Funnel-stappen */
+.funnel-step[hidden] {
+  display: none !important;
+}
+.funnel-step {
+  animation: step-in 0.25s ease-out both;
+}
+@keyframes step-in {
+  from {
+    opacity: 0;
+    transform: translateX(12px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+/* Reveal-animatie bij scrollen */
+.js .reveal {
+  opacity: 0;
+  transform: translateY(16px);
+  transition:
+    opacity 0.6s ease-out,
+    transform 0.6s ease-out;
+}
+.js .reveal.is-visible {
+  opacity: 1;
+  transform: none;
+}
+
+/* Details/summary zonder standaardpijl */
+details > summary {
+  list-style: none;
+}
+details > summary::-webkit-details-marker {
+  display: none;
+}
+
+/* Honeypot */
+.hp {
+  position: absolute;
+  left: -9999px;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+}
